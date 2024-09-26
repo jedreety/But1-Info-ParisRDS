@@ -1,0 +1,4 @@
+﻿  main.c
+Z:\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo5\main.c(46,20): warning C4018: '<' : incompatibilité signed/unsigned
+Z:\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo5\main.c(41,31): warning C4244: 'initialisation' : conversion de 'unsigned int' en 'float', perte possible de données
+  exo5.vcxproj -> Z:\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo1\x64\Debug\exo5.exe

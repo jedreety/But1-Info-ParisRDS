@@ -1,0 +1,3 @@
+﻿  main.c
+Z:\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo1\main.c(9,6): warning C4101: 'tab1' : variable locale non référencée
+  exo1.vcxproj -> Z:\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo1\x64\Debug\exo1.exe
