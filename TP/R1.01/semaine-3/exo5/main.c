@@ -56,7 +56,7 @@ int main() {
 			index_eleve_proche_moyenne = i;
 		}
 	}
-	
+
 	printf("%s", tab_etudiant[index_eleve_proche_moyenne].nom);
 
 	return 0;

@@ -2,7 +2,7 @@
 
 // definir des const
 #define LEN_TAB 100
-enum { TAB_LEN = 5}; // preferable definie que dans main et plus facile a deboguer
+enum { TAB_LEN = 5 }; // preferable definie que dans main et plus facile a deboguer
 
 int main() {
 

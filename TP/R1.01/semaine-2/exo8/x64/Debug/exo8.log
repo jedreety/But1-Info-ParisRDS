@@ -1,0 +1,5 @@
+﻿  main.c
+Z:\Code\C\TP\TP2\exo8\main.c(22,12): warning C4477: 'printf' : la chaîne de format '%u' nécessite un argument de type 'unsigned int', mais l'argument variadique 1 est de type '__int64'
+Z:\Code\C\TP\TP2\exo8\main.c(25,12): warning C4477: 'printf' : la chaîne de format '%u' nécessite un argument de type 'unsigned int', mais l'argument variadique 1 est de type '__int64'
+Z:\Code\C\TP\TP2\exo8\main.c(19,26): warning C4244: 'initialisation' : conversion de 'double' en '__int64', perte possible de données
+  exo8.vcxproj -> Z:\Code\C\TP\TP2\x64\Debug\exo8.exe

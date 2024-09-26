@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3EC3E1B9-C6CF-4AC7-83F1-5E93360BC84E}|exo5\\exo5.vcxproj|Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo5\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{3EC3E1B9-C6CF-4AC7-83F1-5E93360BC84E}|exo5\\exo5.vcxproj|solutionrelative:exo5\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E624B3E-7AC8-4E53-B863-DF619E32838B}|exo4\\exo4.vcxproj|Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo4\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7E624B3E-7AC8-4E53-B863-DF619E32838B}|exo4\\exo4.vcxproj|solutionrelative:exo4\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94860D09-90F3-4D97-BDF7-D52F1E4D1275}|exo3\\exo3.vcxproj|Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo3\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{94860D09-90F3-4D97-BDF7-D52F1E4D1275}|exo3\\exo3.vcxproj|solutionrelative:exo3\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7293EED8-69A6-4A54-A99E-2C5FD74581C8}|exo2\\exo2.vcxproj|Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{7293EED8-69A6-4A54-A99E-2C5FD74581C8}|exo2\\exo2.vcxproj|solutionrelative:exo2\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C648F2BB-FD7F-4B9D-A403-9F25A6C8AAC2}|exo1\\exo1.vcxproj|Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo1\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{C648F2BB-FD7F-4B9D-A403-9F25A6C8AAC2}|exo1\\exo1.vcxproj|solutionrelative:exo1\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo5\\main.c",
+              "RelativeDocumentMoniker": "exo5\\main.c",
+              "ToolTip": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo5\\main.c",
+              "RelativeToolTip": "exo5\\main.c",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAEAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-26T09:56:05.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.c",
+              "DocumentMoniker": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo4\\main.c",
+              "RelativeDocumentMoniker": "exo4\\main.c",
+              "ToolTip": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo4\\main.c",
+              "RelativeToolTip": "exo4\\main.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-26T09:54:18.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "main.c",
+              "DocumentMoniker": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo3\\main.c",
+              "RelativeDocumentMoniker": "exo3\\main.c",
+              "ToolTip": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo3\\main.c",
+              "RelativeToolTip": "exo3\\main.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-26T09:51:06.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "main.c",
+              "DocumentMoniker": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo2\\main.c",
+              "RelativeDocumentMoniker": "exo2\\main.c",
+              "ToolTip": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo2\\main.c",
+              "RelativeToolTip": "exo2\\main.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-26T09:50:13.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "main.c",
+              "DocumentMoniker": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo1\\main.c",
+              "RelativeDocumentMoniker": "exo1\\main.c",
+              "ToolTip": "Z:\\GitHub\\But1-Info-ParisRDS\\TP\\R1.01\\semaine-3\\exo1\\main.c",
+              "RelativeToolTip": "exo1\\main.c",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-09-26T09:49:22.189Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

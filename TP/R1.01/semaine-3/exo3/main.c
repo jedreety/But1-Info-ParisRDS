@@ -18,7 +18,7 @@ int main() {
 	}
 
 	// inverse les valeurs de copy tab
-	for (int i = 0; i < TAB_LEN/2; ++i) {
+	for (int i = 0; i < TAB_LEN / 2; ++i) {
 
 		temp = tab[TAB_LEN - i - 1];
 		copy_tab_1[TAB_LEN - i - 1] = copy_tab_1[i];
