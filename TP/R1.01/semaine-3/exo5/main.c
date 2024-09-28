@@ -20,7 +20,7 @@ int main() {
 
 	for (int i = 0; i < NB_ETUDIANTS_MAX; ++i) {
 
-		// si erreur sur scanf
+		// %29s pour avoir une longueur max de 29
 		if (scanf("%29s %u", &temp_nom, &temp_taille) != 2) {
 			return -1;
 		}

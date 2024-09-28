@@ -1,0 +1,12 @@
+﻿  main.c
+C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo6\main.c(16,12): warning C4129: 'd': unrecognized character escape sequence
+C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo6\main.c(16,12): warning C4477: 'printf' : format string '%u' requires an argument of type 'unsigned int', but variadic argument 1 has type 'size_t'
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo6\main.c(16,12):
+  consider using '%zu' in the format string
+  
+C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo6\main.c(17,12): warning C4129: 'd': unrecognized character escape sequence
+C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo6\main.c(17,12): warning C4477: 'printf' : format string '%u' requires an argument of type 'unsigned int', but variadic argument 1 has type 'size_t'
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-3\exo6\main.c(17,12):
+  consider using '%zu' in the format string
+  
+  exo6.vcxproj -> C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-3\x64\Debug\exo6.exe
