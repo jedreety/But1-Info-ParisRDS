@@ -2,7 +2,7 @@
 
 **Dépôt des Travaux Pratiques et SAÉ**  
 
-**une étoile ⭐ pour la mettre en favoris**
+**mets l'étoile ⭐ en haut à droite pour la mettre en favoris**
 
 *BUT Informatique 1ère année (2024-2025)*
 
