@@ -35,4 +35,13 @@ Si ce dépôt vous est utile, n'oubliez pas de lui attribuer une étoile ⭐ pou
 
 ---
 
+**Contact**
+
+Si vous avez des questions, n'hésitez pas à me mp :
+
+- **Discord** : jedreety
+- **Instagram** : [mehdi.brrr](https://www.instagram.com/mehdi.brrr)
+
+---
+
 Merci !
