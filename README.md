@@ -1,5 +1,5 @@
 # BUT1 Informatique - Paris Rive de Seine
-**une étoile ⭐ pour la mettre en favoris
+**une étoile ⭐ pour la mettre en favoris**
 **Dépôt des Travaux Pratiques et SAÉ**  
 *BUT Informatique 1ère année (2024-2025)*
 
