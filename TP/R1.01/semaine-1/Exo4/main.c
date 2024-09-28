@@ -4,9 +4,9 @@
 int main() {
 
 	 const float taux_conversion = 1.17f;
-	 float dollars = 100.f;
+	 const float dollars = 100.f;
 
-	 float euro = dollars / taux_conversion;
+	 const float euro = dollars / taux_conversion;
 
 	 const double valeur_attendue = 85.470085470085470085470085470085;
 	 const float marge = 0.0001;

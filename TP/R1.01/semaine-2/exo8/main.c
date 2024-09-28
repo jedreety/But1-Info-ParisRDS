@@ -1,10 +1,17 @@
 #include <math.h>
 #include <stdio.h>
+#pragma warning ( disable : 4996)
 
 int main()
 {
-    int nombre = 703;
-    // Calculer le carré du nombre
+	printf("Bonjour veuillez saisir un nombre : \n");
+
+    int nombre;
+	if (scanf("%d", &nombre) != 1) {
+		printf("Une erreur est survenue lors de la saisie du nombre \n");
+		return -1;
+	}
+
     long long carre = (long long)nombre * nombre;
 
     // Trouver le nombre de chiffres dans le nombre initial
@@ -17,12 +24,9 @@ int main()
 
     // Diviser le carré en deux parties
     long long diviseur = pow(10, n);
+
     long long partie_gauche = carre / diviseur;
-
-    printf("%u \n", partie_gauche);
     long long partie_droite = carre % diviseur;
-
-    printf("%u", partie_droite);
 
     // Vérifier si la somme des deux parties est égale au nombre initial
     if (partie_gauche + partie_droite == nombre && partie_droite != 0) {
@@ -35,6 +39,3 @@ int main()
 
 }
 
-
-cc = cc + c
-cc += c

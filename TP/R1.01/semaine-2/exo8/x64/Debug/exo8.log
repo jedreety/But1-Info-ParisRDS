@@ -1,5 +1,19 @@
 ﻿  main.c
-Z:\Code\C\TP\TP2\exo8\main.c(22,12): warning C4477: 'printf' : la chaîne de format '%u' nécessite un argument de type 'unsigned int', mais l'argument variadique 1 est de type '__int64'
-Z:\Code\C\TP\TP2\exo8\main.c(25,12): warning C4477: 'printf' : la chaîne de format '%u' nécessite un argument de type 'unsigned int', mais l'argument variadique 1 est de type '__int64'
-Z:\Code\C\TP\TP2\exo8\main.c(19,26): warning C4244: 'initialisation' : conversion de 'double' en '__int64', perte possible de données
-  exo8.vcxproj -> Z:\Code\C\TP\TP2\x64\Debug\exo8.exe
+C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(21,12): warning C4477: 'printf' : format string '%u' requires an argument of type 'unsigned int', but variadic argument 1 has type '__int64'
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(21,12):
+  consider using '%llu' in the format string
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(21,12):
+  consider using '%Iu' in the format string
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(21,12):
+  consider using '%I64u' in the format string
+  
+C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(24,12): warning C4477: 'printf' : format string '%u' requires an argument of type 'unsigned int', but variadic argument 1 has type '__int64'
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(24,12):
+  consider using '%llu' in the format string
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(24,12):
+  consider using '%Iu' in the format string
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(24,12):
+  consider using '%I64u' in the format string
+  
+C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\exo8\main.c(18,26): warning C4244: 'initializing': conversion from 'double' to '__int64', possible loss of data
+  exo8.vcxproj -> C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\TP\R1.01\semaine-2\x64\Debug\exo8.exe
