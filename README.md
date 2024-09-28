@@ -29,7 +29,7 @@ Pour lancer un fichier C :
 2. Double-cliquez sur ce fichier pour l'ouvrir avec votre environnement de développement (par exemple, Visual Studio).
 3. Compilez et exécutez le programme depuis votre IDE.
 
-## Met une étoile
+## Mets une étoile
 
 Si ce dépôt vous est utile, ou que tu ne veux pas le perdre n'oubliez pas de lui attribuer une étoile ⭐ !
 
