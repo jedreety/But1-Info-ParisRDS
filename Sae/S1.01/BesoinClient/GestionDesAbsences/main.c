@@ -150,7 +150,6 @@ void afficher_aide()
 }
 
 
-
 // Fonction qui inscrit un étudiant
 void inscrire_etudiant(GestionAbsences* gestionAbsences, char commande[LONGUEUR_COMMANDE])
 {
@@ -165,7 +164,7 @@ void inscrire_etudiant(GestionAbsences* gestionAbsences, char commande[LONGUEUR_
 		// Vérifie que l'etudiant n'existe pas déjà
 		if (verifier_etudiant_existe(gestionAbsences, nom, groupe))
 		{
-			printf("Nom incorrect\n", nom, groupe);
+			printf("Nom incorrect\n");
 			return;
 		}
 
