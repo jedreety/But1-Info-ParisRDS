@@ -1,2 +1,6 @@
 ﻿  main.c
+C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(168,30): warning C4474: 'printf' : too many arguments passed for format string
+  C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(168,30):
+  placeholders and their parameters expect 0 variadic arguments, but 2 were provided
+  
   GestionDesAbsences.vcxproj -> C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\x64\Debug\GestionDesAbsences.exe
