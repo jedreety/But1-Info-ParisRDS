@@ -62,6 +62,7 @@ void lecture_commande(char commande[LONGUEUR_COMMANDE], char nom_commande[LONGUE
 INT_Commande lire_commande(char commande[LONGUEUR_COMMANDE]); // Fonction qui renvoie un numéro correspondant à la commande
 void afficher_aide(); // Fonction qui affiche l'aide
 void loop_to_space(char commande[LONGUEUR_COMMANDE], int* i); // Fonction qui permet de passer à l'espace suivant
+void executer_commande(GestionAbsences* gestionAbsences, char commande[LONGUEUR_COMMANDE]); // execute la commande 
 
 // C1
 void inscrire_etudiant(GestionAbsences* gestionAbsences, char commande[LONGUEUR_COMMANDE]); // Fonction qui inscrit un étudiant
@@ -95,7 +96,7 @@ int main() {
 	while ( true )
 	{
 
-		printf("Entrer une commade : ");
+		printf("Entrer une commande : ");
 
 		// Lecture de la commande
 		if (scanf(" %[^\n]%*c", commande) != 1) // %*c permet de consommer le caractère de retour à la ligne
@@ -110,47 +111,7 @@ int main() {
 
 
 		// Traitement de la commande
-		switch (lire_commande(commande))
-		{
-		case EXIT:
-			
-			printf("Au revoir !\n");
-			return 0;
-			break;
-
-		case INSCRIPTION:
-
-			inscrire_etudiant(&gestionAbsences, commande);
-
-			break;
-
-		case ABSENCE:
-
-			enregistrer_absence(&gestionAbsences, commande);
-			
-			break;
-
-		case ETUDIANTS:
-
-			calculer_etudiants_absents(commande, &gestionAbsences);
-			break;
-
-		case HELP:
-
-			afficher_aide();
-			break;
-
-		case INCONNU:
-
-			printf("Commande inconnue\n");
-			break;
-
-		default:
-			printf("Commande non traitee\n");
-			return -1;
-			break;
-		}
-
+		executer_commande(&gestionAbsences, commande);
 		
 	}
 
@@ -207,6 +168,51 @@ void loop_to_space(char commande[LONGUEUR_COMMANDE], int* i)
 		(*i)++;
 	}
 	(*i)++;
+}
+
+// execute la commande 
+void executer_commande(GestionAbsences* gestionAbsences, char commande[LONGUEUR_COMMANDE]) {
+	
+	switch (lire_commande(commande))
+	{
+	case EXIT:
+
+		printf("Au revoir !\n");
+		return 0;
+		break;
+
+	case INSCRIPTION:
+
+		inscrire_etudiant(gestionAbsences, commande);
+
+		break;
+
+	case ABSENCE:
+
+		enregistrer_absence(gestionAbsences, commande);
+
+		break;
+
+	case ETUDIANTS:
+
+		calculer_etudiants_absents(commande, gestionAbsences);
+		break;
+
+	case HELP:
+
+		afficher_aide();
+		break;
+
+	case INCONNU:
+
+		printf("Commande inconnue\n");
+		break;
+
+	default:
+		printf("Commande non traitee\n");
+		return -1;
+		break;
+	}
 }
 
 

@@ -1,1 +1,15 @@
-﻿  GestionDesAbsences.vcxproj -> Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\x64\Debug\GestionDesAbsences.exe
+﻿  main.c
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(181,3): warning C4098: 'executer_commande' : fonction 'void' retournant une valeur
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(213,3): warning C4098: 'executer_commande' : fonction 'void' retournant une valeur
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(287,20): warning C4018: '<' : incompatibilité signed/unsigned
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(309,19): warning C4018: '>=' : incompatibilité signed/unsigned
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(391,20): warning C4018: '<' : incompatibilité signed/unsigned
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(418,20): warning C4018: '<' : incompatibilité signed/unsigned
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(431,68): warning C4133: 'fonction' : types incompatibles - de 'void (__cdecl *)(const void *,const void *)' à '_CoreCrtNonSecureSearchSortCompareFunction'
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(432,68): warning C4133: 'fonction' : types incompatibles - de 'void (__cdecl *)(const void *,const void *)' à '_CoreCrtNonSecureSearchSortCompareFunction'
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(455,20): warning C4018: '<' : incompatibilité signed/unsigned
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(474,2): warning C4098: 'sort_etudiants_absents_NOM' : fonction 'void' retournant une valeur
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(485,3): warning C4098: 'sort_etudiants_absents_GROUPE' : fonction 'void' retournant une valeur
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(489,3): warning C4098: 'sort_etudiants_absents_GROUPE' : fonction 'void' retournant une valeur
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(493,3): warning C4098: 'sort_etudiants_absents_GROUPE' : fonction 'void' retournant une valeur
+  GestionDesAbsences.vcxproj -> Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\x64\Debug\GestionDesAbsences.exe
