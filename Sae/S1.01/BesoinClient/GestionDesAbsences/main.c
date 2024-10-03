@@ -16,6 +16,18 @@ enum {
 	LONGUEUR_NOM = 31,
 };
 
+typedef char STR_Commande[LONGUEUR_COMMANDE];
+
+const STR_Commande liste_commande[] = {
+	
+	"exit",
+	"inscription",
+	"absence",
+	"etudiants",
+	"help"
+};
+const unsigned int nb_commande = (sizeof(liste_commande) / sizeof(liste_commande[0])) + 1; // Calcule le nombre de commande inscrite
+
 typedef enum {
 	EXIT = 0,
 	INSCRIPTION,
@@ -24,7 +36,7 @@ typedef enum {
 
 	HELP,
 	INCONNU,
-} Commande;
+} INT_Commande;
 
 typedef struct {
 	unsigned int Njour;
@@ -47,9 +59,10 @@ typedef struct {
 
 // C0
 void lecture_commande(char commande[LONGUEUR_COMMANDE], char nom_commande[LONGUEUR_COMMANDE]); // Fonction qui permet de lire le nom de la commande (premier mot de la commande)
-Commande lire_commande(char commande[LONGUEUR_COMMANDE]); // Fonction qui renvoie un numéro correspondant à la commande
+INT_Commande lire_commande(char commande[LONGUEUR_COMMANDE]); // Fonction qui renvoie un numéro correspondant à la commande
 void afficher_aide(); // Fonction qui affiche l'aide
 void loop_to_space(char commande[LONGUEUR_COMMANDE], int* i); // Fonction qui permet de passer à l'espace suivant
+void executer_commande(GestionAbsences* gestionAbsences, char commande[LONGUEUR_COMMANDE]); // execute la commande 
 
 // C1
 void inscrire_etudiant(GestionAbsences* gestionAbsences, char commande[LONGUEUR_COMMANDE]); // Fonction qui inscrit un étudiant
@@ -65,7 +78,7 @@ void lecture_demijournee_absence(char commande[LONGUEUR_COMMANDE], char demijour
 bool verifier_absence_existe(GestionAbsences* gestionAbsences, int id, int Njour, char demijournee[LEN_CHAR_DEMI_JOURNEE]); // Fonction qui vérifie si une absence existe
 
 // C3
-void calculer_etudiants_absents(GestionAbsences* gestionAbsences); // Fonction qui affiche la liste des étudiants absents à un jour donné
+void calculer_etudiants_absents(char commande[LONGUEUR_COMMANDE], GestionAbsences* gestionAbsences); // Fonction qui affiche la liste des étudiants absents à un jour donné
 void lecture_jour_absence(char commande[LONGUEUR_COMMANDE], int* jour); // Fonction qui permet de lire le jour de l'absence
 void insert_etudiants_absents(Etudiant etudiant_absents[MAX_ETUDIANTS], Etudiant etudiant, int* nombreEtudiantsAbsents, int jour); // Fonction qui insère un étudiant dans la liste des étudiants absents
 void sort_etudiants_absents_NOM(const void* a, const void* b); // Fonction qui trie la liste des étudiants absents par nom (ordre alphabétique)
@@ -83,7 +96,7 @@ int main() {
 	while ( true )
 	{
 
-		printf("Entrer une commade : ");
+		printf("Entrer une commande : ");
 
 		// Lecture de la commande
 		if (scanf(" %[^\n]%*c", commande) != 1) // %*c permet de consommer le caractère de retour à la ligne
@@ -98,47 +111,7 @@ int main() {
 
 
 		// Traitement de la commande
-		switch (lire_commande(commande))
-		{
-		case EXIT:
-			
-			printf("Au revoir !\n");
-			return 0;
-			break;
-
-		case INSCRIPTION:
-
-			inscrire_etudiant(&gestionAbsences, commande);
-
-			break;
-
-		case ABSENCE:
-
-			enregistrer_absence(&gestionAbsences, commande);
-			
-			break;
-
-		case ETUDIANTS:
-
-			calculer_etudiants_absents(commande, &gestionAbsences);
-			break;
-
-		case HELP:
-
-			afficher_aide();
-			break;
-
-		case INCONNU:
-
-			printf("Commande inconnue\n");
-			break;
-
-		default:
-			printf("Commande non traitee\n");
-			return -1;
-			break;
-		}
-
+		executer_commande(&gestionAbsences, commande);
 		
 	}
 
@@ -159,36 +132,21 @@ void lecture_commande(char commande[LONGUEUR_COMMANDE], char nom_commande[LONGUE
 }
 
 // Fonction qui renvoie un numéro correspondant à la commande
-Commande lire_commande(char commande[LONGUEUR_COMMANDE])
+INT_Commande lire_commande(char commande[LONGUEUR_COMMANDE])
 {
 
 	char nom_commande[LONGUEUR_COMMANDE];
 	lecture_commande(commande, nom_commande);
 
-	if (strcmp(nom_commande, "exit") == 0)
-	{
-		return EXIT;
+	// parcour la list des commandes
+	for (unsigned int index = 0; index < nb_commande; ++index) {
+		// Si le cas est trouvé
+		if (strcmp(nom_commande, liste_commande[index]) == 0) {
+			return index; // il est important que 
+		}
 	}
-	else if (strcmp(nom_commande, "inscription") == 0)
-	{
-		return INSCRIPTION;
-	}
-	else if (strcmp(nom_commande, "absence") == 0)
-	{
-		return ABSENCE;
-	}
-	else if (strcmp(nom_commande, "etudiants") == 0)
-	{
-		return ETUDIANTS;
-	}
-	else if (strcmp(nom_commande, "help") == 0)
-	{
-		return HELP;
-	}
-	else
-	{
-		return INCONNU;
-	}
+	return nb_commande + 1;
+
 }
 
 // Fonction qui affiche l'aide
@@ -210,6 +168,51 @@ void loop_to_space(char commande[LONGUEUR_COMMANDE], int* i)
 		(*i)++;
 	}
 	(*i)++;
+}
+
+// execute la commande 
+void executer_commande(GestionAbsences* gestionAbsences, char commande[LONGUEUR_COMMANDE]) {
+	
+	switch (lire_commande(commande))
+	{
+	case EXIT:
+
+		printf("Au revoir !\n");
+		return 0;
+		break;
+
+	case INSCRIPTION:
+
+		inscrire_etudiant(gestionAbsences, commande);
+
+		break;
+
+	case ABSENCE:
+
+		enregistrer_absence(gestionAbsences, commande);
+
+		break;
+
+	case ETUDIANTS:
+
+		calculer_etudiants_absents(commande, gestionAbsences);
+		break;
+
+	case HELP:
+
+		afficher_aide();
+		break;
+
+	case INCONNU:
+
+		printf("Commande inconnue\n");
+		break;
+
+	default:
+		printf("Commande non traitee\n");
+		return -1;
+		break;
+	}
 }
 
 
