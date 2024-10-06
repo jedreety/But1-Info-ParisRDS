@@ -17,7 +17,7 @@
 	
     !!! A savoir l'ordre des commandes dans l'énumération doit être le même que dans la liste liste_commande !!!
 
-    	3 - Ajouter la commande dans la fonction help				     <void afficher_aide()>
+    3 - Ajouter la commande dans la fonction help				     <void afficher_aide()>
 	4 - Ajouter la commande dans la fonction executer_commande      <bool executer_commande(Context* context, char commande[LONGUEUR_COMMANDE])>
 	5 - Ajouter les fonctions necessaire.
 
@@ -37,7 +37,7 @@
 	!!! 
         Les fonctions trouver_etudiant_par_id et trouver_absence_par_id sont implementé de sorte a ce que les IDs sont attribués séquentiellement et sans suppression
 		Si une fonction supprime un étudiant ou une absence, il faudra adapter ces fonctions ( remplace l'id par un NULL ou changer la fonction par une recherche linéaire )
-    	!!!
+    !!!
 
 	... quelques autres fonctions utiles sont disponibles mais ne sont pas mentionnées ici.
 
