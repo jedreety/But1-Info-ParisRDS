@@ -43,7 +43,7 @@ Si ce dépôt vous est utile, ou que tu ne veux pas le perdre n'oubliez pas de l
 Si vous avez des questions, n'hésitez pas à me mp :
 
 - **Discord** : jedreety
-- **Instagram** : [mehdi.brrr](https://www.instagram.com/mehdi.brrr)
+- **Instagram** : [mehdi.b3r](https://www.instagram.com/mehdi.b3r)
 
 ---
 
