@@ -13,11 +13,11 @@
 
     Pour ajouter une commande :
 	1 - Ajouter le nom de commande dans la liste liste_commande    <const STR_Commande liste_commande[]>
-	2 - Ajouter la commande dans l'énumération INT_Commande        <enum INT_Commande>
+	2 - Ajouter la commande dans l'Ã©numÃ©ration INT_Commande        <enum INT_Commande>
 	
-    !!! A savoir l'ordre des commandes dans l'énumération doit être le même que dans la liste liste_commande !!!
+    !!! A savoir l'ordre des commandes dans l'Ã©numÃ©ration doit Ãªtre le mÃªme que dans la liste liste_commande !!!
 
-    3 - Ajouter la commande dans la fonction help				     <void afficher_aide()>
+    	3 - Ajouter la commande dans la fonction help				     <void afficher_aide()>
 	4 - Ajouter la commande dans la fonction executer_commande      <bool executer_commande(Context* context, char commande[LONGUEUR_COMMANDE])>
 	5 - Ajouter les fonctions necessaire.
 
@@ -26,20 +26,20 @@
 
 	- loop_to_space : Permet de passer au mot suivant en donnant l'index ( renvoie l'index de la premiere l'ettre dans la commande du mot suivant )
 	- lecture_nombre : Permet de lire un nombre
-	- lecture_string : Permet de lire une chaine de caractères
+	- lecture_string : Permet de lire une chaine de caractÃ¨res
 
-	- verifier_etudiant_existe : Permet de vérifier si un étudiant existe ( renvoie un booléen )
-	- trouver_etudiant_par_id : Permet de trouver un étudiant par son ID ( renvoie un pointeur sur l'étudiant )
+	- verifier_etudiant_existe : Permet de vÃ©rifier si un Ã©tudiant existe ( renvoie un boolÃ©en )
+	- trouver_etudiant_par_id : Permet de trouver un Ã©tudiant par son ID ( renvoie un pointeur sur l'Ã©tudiant )
 
-	- verifier_absence_existe : Permet de vérifier si une absence existe ( renvoie un booléen )
+	- verifier_absence_existe : Permet de vÃ©rifier si une absence existe ( renvoie un boolÃ©en )
 	- trouver_absence_par_id : Permet de trouver une absence par son ID ( renvoie un pointeur sur l'absence )
 
 	!!! 
-        Les fonctions trouver_etudiant_par_id et trouver_absence_par_id sont implementé de sorte a ce que les IDs sont attribués séquentiellement et sans suppression
-		Si une fonction supprime un étudiant ou une absence, il faudra adapter ces fonctions ( remplace l'id par un NULL ou changer la fonction par une recherche linéaire )
+        Les fonctions trouver_etudiant_par_id et trouver_absence_par_id sont implementÃ© de sorte a ce que les IDs sont attribuÃ©s sÃ©quentiellement et sans suppression
+		Si une fonction supprime un Ã©tudiant ou une absence, il faudra adapter ces fonctions ( remplace l'id par un NULL ou changer la fonction par une recherche linÃ©aire )
     !!!
 
-	... quelques autres fonctions utiles sont disponibles mais ne sont pas mentionnées ici.
+	... quelques autres fonctions utiles sont disponibles mais ne sont pas mentionnÃ©es ici.
 
 */
 
@@ -93,21 +93,21 @@ typedef struct {
     char nom[LONGUEUR_NOM];
     int groupe;
 
-	// liste et nombre d'absences de l'étudiant
+	// liste et nombre d'absences de l'Ã©tudiant
     unsigned int absences_id[MAX_ABSENCES];
     unsigned int nombreAbsences;
 } Etudiant;
 
 typedef struct {
-	// prochain id pour les étudiants et les absences
+	// prochain id pour les Ã©tudiants et les absences
     unsigned int next_etudiant_id;
     unsigned int next_absence_id;
 
-	// liste des étudiants et des absences
+	// liste des Ã©tudiants et des absences
     Etudiant etudiants[MAX_ETUDIANTS];
     Absence absences[MAX_ABSENCES * MAX_ETUDIANTS];
 
-	// nombre d'étudiants et d'absences
+	// nombre d'Ã©tudiants et d'absences
     unsigned int nombreEtudiants;
     unsigned int nombreAbsences;
 } GestionAbsences;
@@ -118,7 +118,7 @@ typedef struct {
     GestionAbsences gestionAbsences;
     unsigned int nombreCommandes;
 } Context;
-void init_context(Context* context, unsigned int context_id) /* Initialisé le context */ {
+void init_context(Context* context, unsigned int context_id) /* InitialisÃ© le context */ {
     context->id = context_id;
 	context->nombreCommandes = 0;
 	context->gestionAbsences.next_etudiant_id = 1;
@@ -127,7 +127,7 @@ void init_context(Context* context, unsigned int context_id) /* Initialisé le co
 	context->gestionAbsences.nombreAbsences = 0;
 }
 
-/* C0 | Fonctions de lecture et d'exécution des commandes */
+/* C0 | Fonctions de lecture et d'exÃ©cution des commandes */
 void lecture_commande(char commande[LONGUEUR_COMMANDE], char nom_commande[LONGUEUR_COMMANDE]);
 INT_Commande lire_commande(char commande[LONGUEUR_COMMANDE]);
 void afficher_aide();
@@ -136,7 +136,7 @@ bool executer_commande(Context* context, char commande[LONGUEUR_COMMANDE]);
 void lecture_nombre(char commande[LONGUEUR_COMMANDE], int* nombre, int i);
 void lecture_string(char commande[LONGUEUR_COMMANDE], char string[LONGUEUR_COMMANDE], unsigned int string_len, int i);
 
-/* C1 | Fonctions pour la gestion des étudiants */
+/* C1 | Fonctions pour la gestion des Ã©tudiants */
 void inscrire_etudiant(Context* context, char commande[LONGUEUR_COMMANDE]);
 void lecture_nom_etudiant(char commande[LONGUEUR_COMMANDE], char nom[LONGUEUR_NOM]);
 void lecture_groupe_etudiant(char commande[LONGUEUR_COMMANDE], int* groupe);
@@ -151,14 +151,14 @@ void lecture_demijournee_absence(char commande[LONGUEUR_COMMANDE], char demijour
 bool verifier_absence_existe(GestionAbsences* gestionAbsences, unsigned int etudiant_id, unsigned int Njour, char demijournee[LONGUEUR_DEMI_JOURNEE]);
 Absence* trouver_absence_par_id(GestionAbsences* gestionAbsences, unsigned int id);
 
-/* C3 | Fonctions pour l'affichage des étudiants absents */
+/* C3 | Fonctions pour l'affichage des Ã©tudiants absents */
 void calculer_etudiants_absents(char commande[LONGUEUR_COMMANDE], Context* context);
 void lecture_jour_absence(char commande[LONGUEUR_COMMANDE], int* jour);
 int compte_nombre_absence(GestionAbsences* gestionAbsences, Etudiant* etudiant, int jour);
 int sort_etudiants_absents(const void* a, const void* b);
 void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudiant_absents[MAX_ETUDIANTS], int nombreEtudiantsAbsents, int jour);
 
-/* C4 | Fonctions de dêpot de justificatif */
+/* C4 | Fonctions de dÃªpot de justificatif */
 
 
 int main() {
@@ -182,7 +182,7 @@ int main() {
             return 1;
         }
         else {
-			commande[LONGUEUR_COMMANDE - 1] = '\0'; // Ajout d'un caractère de fin de chaîne
+			commande[LONGUEUR_COMMANDE - 1] = '\0'; // Ajout d'un caractÃ¨re de fin de chaÃ®ne
         }
 
         // Traitement de la commande
@@ -198,15 +198,15 @@ int main() {
 void lecture_commande(char commande[LONGUEUR_COMMANDE], char nom_commande[LONGUEUR_COMMANDE]) {
 	int i = 0; // index qui parcourt la chaine ( commande )
 
-	// Parcourt la chaine jusqu'à l'espace ou la fin de la chaine
+	// Parcourt la chaine jusqu'Ã  l'espace ou la fin de la chaine
     while (commande[i] != ' ' && commande[i] != '\0') {
-		nom_commande[i] = commande[i]; // Copie le caractère dans la reference
+		nom_commande[i] = commande[i]; // Copie le caractÃ¨re dans la reference
         i++;
     }
 	nom_commande[i] = '\0';
 }
 
-/* Fonction qui renvoie un numéro correspondant à la commande */
+/* Fonction qui renvoie un numÃ©ro correspondant Ã  la commande */
 INT_Commande lire_commande(char commande[LONGUEUR_COMMANDE]) {
 
 	// nom_commande est le premier mot de la commande
@@ -219,13 +219,13 @@ INT_Commande lire_commande(char commande[LONGUEUR_COMMANDE]) {
 		// Compare le nom de la commande avec la liste des commandes
         if (strcmp(nom_commande, liste_commande[index]) == 0) {
             /*
-				Renvoie le numéro de la commande
-				Pour savoir même si la fonction renvoie un int, il est interprete comme un INT_Commande
-				Chaque commande a un numéro correspondant :
+				Renvoie le numÃ©ro de la commande
+				Pour savoir mÃªme si la fonction renvoie un int, il est interprete comme un INT_Commande
+				Chaque commande a un numÃ©ro correspondant :
 				- EXIT = 0
 				- INSCRIPTION = 1
 				etc...
-				Ainsi on peut savoir quelle commande a été entrée
+				Ainsi on peut savoir quelle commande a Ã©tÃ© entrÃ©e
             */
 			return index;
         }
@@ -282,27 +282,27 @@ void afficher_aide() {
 }
 
 
-/* Fonction qui permet de passer à l'espace suivant */
+/* Fonction qui permet de passer Ã  l'espace suivant */
 void loop_to_space(char commande[LONGUEUR_COMMANDE], int* i) {
 
-	// Parcourt la chaine jusqu'à l'espace ou la fin de la chaine
+	// Parcourt la chaine jusqu'Ã  l'espace ou la fin de la chaine
     while (commande[*i] != ' ' && commande[*i] != '\0') {
         (*i)++;
     }
 
-	// Si il y a des espaces consécutifs
+	// Si il y a des espaces consÃ©cutifs
     while (commande[*i] == ' ' && commande[*i] != '\0') {
         (*i)++;
     }
 }
 
-/* Exécute la commande */
+/* ExÃ©cute la commande */
 bool executer_commande(Context* context, char commande[LONGUEUR_COMMANDE]) {
     /*
-		Permet d'executer la commande entrée par l'utilisateur
-		Chaque commande a un numéro correspondant
+		Permet d'executer la commande entrÃ©e par l'utilisateur
+		Chaque commande a un numÃ©ro correspondant
 
-		Renvoie un booléen une fois la commande terminée :
+		Renvoie un boolÃ©en une fois la commande terminÃ©e :
 		    > true : pour passer a la commande suivante
 		    > false : pour quitter l'application
     */
@@ -343,10 +343,10 @@ bool executer_commande(Context* context, char commande[LONGUEUR_COMMANDE]) {
     return true;
 }
 
-/* Fonction qui inscrit un étudiant */
+/* Fonction qui inscrit un Ã©tudiant */
 void inscrire_etudiant(Context* context, char commande[LONGUEUR_COMMANDE]) {
 
-	// Récupère la gestion des absences
+	// RÃ©cupÃ¨re la gestion des absences
     GestionAbsences* gestionAbsences = &(context->gestionAbsences);
 
 	if (gestionAbsences->nombreEtudiants >= MAX_ETUDIANTS) {
@@ -360,20 +360,20 @@ void inscrire_etudiant(Context* context, char commande[LONGUEUR_COMMANDE]) {
     lecture_nom_etudiant(commande, nom);
     lecture_groupe_etudiant(commande, &groupe);
 
-    // Vérifie que l'étudiant n'existe pas déjà
+    // VÃ©rifie que l'Ã©tudiant n'existe pas dÃ©jÃ 
     if (verifier_etudiant_existe(gestionAbsences, nom, groupe)) {
         printf("Nom incorrect\n");
         return;
     }
 
-    // Crée l'étudiant
+    // CrÃ©e l'Ã©tudiant
     Etudiant etudiant;
     etudiant.id = gestionAbsences->next_etudiant_id++;
     strcpy(etudiant.nom, nom);
     etudiant.groupe = groupe;
     etudiant.nombreAbsences = 0;
 
-    // Ajoute l'étudiant à la liste
+    // Ajoute l'Ã©tudiant Ã  la liste
     gestionAbsences->etudiants[gestionAbsences->nombreEtudiants] = etudiant;
     gestionAbsences->nombreEtudiants++;
 
@@ -381,7 +381,7 @@ void inscrire_etudiant(Context* context, char commande[LONGUEUR_COMMANDE]) {
 
 }
 
-/* Fonction qui permet de lire le nom de l'étudiant */
+/* Fonction qui permet de lire le nom de l'Ã©tudiant */
 void lecture_nom_etudiant(char commande[LONGUEUR_COMMANDE], char nom[LONGUEUR_NOM]) {
 
     int i = 0;
@@ -396,10 +396,10 @@ void lecture_nombre(char commande[LONGUEUR_COMMANDE], int* nombre, int i) {
     
     while (commande[i] != ' ' && commande[i] != '\0') {
 
-        // Si le caractère est un chiffre
+        // Si le caractÃ¨re est un chiffre
         if (commande[i] >= '0' && commande[i] <= '9') {
 
-            // Conversion du caractère en entier '1' -> 1
+            // Conversion du caractÃ¨re en entier '1' -> 1
             *nombre = *nombre * 10 + (commande[i] - '0');
             i++;
         }
@@ -409,7 +409,7 @@ void lecture_nombre(char commande[LONGUEUR_COMMANDE], int* nombre, int i) {
     }
 }
 
-/* Fonction qui permet de lire une chaine de caractères */
+/* Fonction qui permet de lire une chaine de caractÃ¨res */
 void lecture_string(char commande[LONGUEUR_COMMANDE], char string[LONGUEUR_COMMANDE], unsigned int string_len, int i) {
 	int j = 0;
 
@@ -424,7 +424,7 @@ void lecture_string(char commande[LONGUEUR_COMMANDE], char string[LONGUEUR_COMMA
 	string[j] = '\0';
 }
 
-/* Fonction qui permet de lire le groupe de l'étudiant */
+/* Fonction qui permet de lire le groupe de l'Ã©tudiant */
 void lecture_groupe_etudiant(char commande[LONGUEUR_COMMANDE], int* groupe) {
 
     int i = 0;
@@ -434,12 +434,12 @@ void lecture_groupe_etudiant(char commande[LONGUEUR_COMMANDE], int* groupe) {
 	lecture_nombre(commande, (unsigned int*)groupe, i);
 }
 
-/* Fonction qui vérifie si un étudiant existe */
+/* Fonction qui vÃ©rifie si un Ã©tudiant existe */
 bool verifier_etudiant_existe(GestionAbsences* gestionAbsences, char nom[LONGUEUR_NOM], int groupe) {
-	// Parcourt la liste des étudiants
+	// Parcourt la liste des Ã©tudiants
     for (unsigned int i = 0; i < gestionAbsences->nombreEtudiants; i++) {
         
-		// Compare le nom et le groupe de l'étudiant
+		// Compare le nom et le groupe de l'Ã©tudiant
         if (strcmp(gestionAbsences->etudiants[i].nom, nom) == 0 && gestionAbsences->etudiants[i].groupe == groupe) {
             return true;
         }
@@ -447,10 +447,10 @@ bool verifier_etudiant_existe(GestionAbsences* gestionAbsences, char nom[LONGUEU
     return false;
 }
 
-/* Fonction pour trouver un étudiant par son ID */
+/* Fonction pour trouver un Ã©tudiant par son ID */
 Etudiant* trouver_etudiant_par_id(GestionAbsences* gestionAbsences, unsigned int id) {
 	
-    // Si l'id est dans la plage des étudiants
+    // Si l'id est dans la plage des Ã©tudiants
     if (id > 0 && id <= gestionAbsences->nombreEtudiants) {
         return &(gestionAbsences->etudiants[id - 1]);
     }
@@ -494,24 +494,24 @@ void enregistrer_absence(Context* context, char commande[LONGUEUR_COMMANDE]) {
         return;
     }
 
-    // Crée l'absence
+    // CrÃ©e l'absence
     Absence absence;
     absence.id = gestionAbsences->next_absence_id++;
     absence.Njour = Njour;
     strcpy(absence.demijournee, demijournee);
 
-    // Ajoute l'absence à la liste globale
+    // Ajoute l'absence Ã  la liste globale
     gestionAbsences->absences[gestionAbsences->nombreAbsences] = absence;
     gestionAbsences->nombreAbsences++;
 
-    // Ajoute l'id de l'absence à l'étudiant
+    // Ajoute l'id de l'absence Ã  l'Ã©tudiant
     etudiant->absences_id[etudiant->nombreAbsences] = absence.id;
     etudiant->nombreAbsences++;
 
     printf("Absence enregistree [%u]\n", absence.id);
 }
 
-/* Fonction qui permet de lire l'id de l'étudiant */
+/* Fonction qui permet de lire l'id de l'Ã©tudiant */
 void lecture_id_etudiant(char commande[LONGUEUR_COMMANDE], unsigned int* id) {
     int i = 0;
     loop_to_space(commande, &i); /* Commande */
@@ -523,7 +523,7 @@ void lecture_id_etudiant(char commande[LONGUEUR_COMMANDE], unsigned int* id) {
 	lecture_nombre(commande, id, i);
 }
 
-/* Fonction qui permet de lire le numéro de jour de l'absence */
+/* Fonction qui permet de lire le numÃ©ro de jour de l'absence */
 void lecture_Njour_absence(char commande[LONGUEUR_COMMANDE], unsigned int* Njour) {
     int i = 0;
     loop_to_space(commande, &i); /* Commande */
@@ -537,17 +537,17 @@ void lecture_Njour_absence(char commande[LONGUEUR_COMMANDE], unsigned int* Njour
 	lecture_nombre(commande, Njour, i);
 }
 
-/* Fonction qui permet de lire la demi-journée de l'absence */
+/* Fonction qui permet de lire la demi-journÃ©e de l'absence */
 void lecture_demijournee_absence(char commande[LONGUEUR_COMMANDE], char demijournee[LONGUEUR_DEMI_JOURNEE]) {
     int i = 0;
     loop_to_space(commande, &i); /* Commande */
     loop_to_space(commande, &i); /* Id */
     loop_to_space(commande, &i); /* Njour */
     
-	lecture_string(commande, demijournee, LONGUEUR_DEMI_JOURNEE - 1, i); /* Demi-journée */
+	lecture_string(commande, demijournee, LONGUEUR_DEMI_JOURNEE - 1, i); /* Demi-journÃ©e */
 }
 
-/* Fonction qui vérifie si une absence existe */
+/* Fonction qui vÃ©rifie si une absence existe */
 bool verifier_absence_existe(GestionAbsences* gestionAbsences, unsigned int etudiant_id, unsigned int Njour, char demijournee[LONGUEUR_DEMI_JOURNEE]) {
     
     Etudiant* etudiant = trouver_etudiant_par_id(gestionAbsences, etudiant_id);
@@ -555,14 +555,14 @@ bool verifier_absence_existe(GestionAbsences* gestionAbsences, unsigned int etud
         return false;
     }
 
-	// Parcourt la liste des absences de l'étudiant
+	// Parcourt la liste des absences de l'Ã©tudiant
     for (unsigned int i = 0; i < etudiant->nombreAbsences; i++) {
 
 		// initialise l'absence et trouve l'absence par son id
         unsigned int absence_id = etudiant->absences_id[i];
         Absence* absence = trouver_absence_par_id(gestionAbsences, absence_id);
 
-		// Si l'absence existe et que le jour et la demi-journée correspondent
+		// Si l'absence existe et que le jour et la demi-journÃ©e correspondent
         if (absence != NULL && absence->Njour == Njour && strcmp(absence->demijournee, demijournee) == 0) {
             return true;
         }
@@ -580,7 +580,7 @@ Absence* trouver_absence_par_id(GestionAbsences* gestionAbsences, unsigned int i
 	return NULL;
 }
 
-/* Fonction qui affiche la liste des étudiants absents jusqu'à un jour donné */
+/* Fonction qui affiche la liste des Ã©tudiants absents jusqu'Ã  un jour donnÃ© */
 void calculer_etudiants_absents(char commande[LONGUEUR_COMMANDE], Context* context) {
 
     GestionAbsences* gestionAbsences = &(context->gestionAbsences);
@@ -598,15 +598,15 @@ void calculer_etudiants_absents(char commande[LONGUEUR_COMMANDE], Context* conte
 
     Etudiant etudiant_absents[MAX_ETUDIANTS];
 
-    // Copie de la liste des étudiants
+    // Copie de la liste des Ã©tudiants
     for (unsigned int i = 0; i < gestionAbsences->nombreEtudiants; i++) {
         etudiant_absents[i] = gestionAbsences->etudiants[i];
     }
 
-    // Tri des étudiants absents
+    // Tri des Ã©tudiants absents
     qsort(etudiant_absents, gestionAbsences->nombreEtudiants, sizeof(Etudiant), sort_etudiants_absents);
 
-    // Affiche les étudiants absents
+    // Affiche les Ã©tudiants absents
     afficher_etudiants_absents(gestionAbsences, etudiant_absents, gestionAbsences->nombreEtudiants, jour);
 }
 
@@ -623,19 +623,19 @@ void lecture_jour_absence(char commande[LONGUEUR_COMMANDE], int* jour) {
 	lecture_nombre(commande, jour, i);
 }
 
-/* Fonction qui compte le nombre d'absence d'un étudiant avant un jour donné */
+/* Fonction qui compte le nombre d'absence d'un Ã©tudiant avant un jour donnÃ© */
 int compte_nombre_absence(GestionAbsences* gestionAbsences, Etudiant* etudiant, int jour) {
 
     int nombreAbsences = 0;
     
-	// Parcourt la liste des absences de l'étudiant
+	// Parcourt la liste des absences de l'Ã©tudiant
     for (unsigned int i = 0; i < etudiant->nombreAbsences; i++) {
 
 		// initialise l'absence et trouve l'absence par son id
         unsigned int absence_id = etudiant->absences_id[i];
         Absence* absence = trouver_absence_par_id(gestionAbsences, absence_id);
 
-		// Si l'absence existe et que le jour est inférieur ou égal au jour donné
+		// Si l'absence existe et que le jour est infÃ©rieur ou Ã©gal au jour donnÃ©
         if (absence != NULL && absence->Njour <= (unsigned int)jour) {
             nombreAbsences++;
         }
@@ -643,7 +643,7 @@ int compte_nombre_absence(GestionAbsences* gestionAbsences, Etudiant* etudiant, 
     return nombreAbsences;
 }
 
-/* Fonction qui trie la liste des étudiants absents par groupe puis par nom */
+/* Fonction qui trie la liste des Ã©tudiants absents par groupe puis par nom */
 int sort_etudiants_absents(const void* a, const void* b) {
     Etudiant* etudiant1 = (Etudiant*)a;
     Etudiant* etudiant2 = (Etudiant*)b;
@@ -656,14 +656,14 @@ int sort_etudiants_absents(const void* a, const void* b) {
     }
 }
 
-/* Fonction qui affiche la liste des étudiants absents */
+/* Fonction qui affiche la liste des Ã©tudiants absents */
 void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudiant_absents[MAX_ETUDIANTS], int nombreEtudiantsAbsents, int jour) {
 
     // parcour la liste
     for (int i = 0; i < nombreEtudiantsAbsents; i++) {
         
         Etudiant* etudiant = &etudiant_absents[i];
-		int nb_absences = compte_nombre_absence(gestionAbsences, etudiant, jour); // compte le nombre d'absences de l'étudiant jusqu'au jour donné
+		int nb_absences = compte_nombre_absence(gestionAbsences, etudiant, jour); // compte le nombre d'absences de l'Ã©tudiant jusqu'au jour donnÃ©
         
         printf("(%u) %s %u %u\n", etudiant->id, etudiant->nom, etudiant->groupe, nb_absences);
     }
