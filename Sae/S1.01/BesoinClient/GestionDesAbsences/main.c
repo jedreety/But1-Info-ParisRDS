@@ -43,12 +43,13 @@
 
 */
 
-typedef enum {
+typedef enum /* bool */ {
+
     false = 0,
     true = 1,
 } bool;
 
-enum {
+enum /* Constantes */ {
     MAX_ABSENCES = 100,
     MAX_ETUDIANTS = 100,
 
@@ -61,6 +62,7 @@ enum {
 typedef char STR_Commande[LONGUEUR_COMMANDE];
 
 const STR_Commande liste_commande[] = {
+
     "exit",
     "inscription",
     "absence",
@@ -70,7 +72,8 @@ const STR_Commande liste_commande[] = {
 };
 const unsigned int nb_commande = sizeof(liste_commande) / sizeof(liste_commande[0]);
 
-typedef enum {
+typedef enum /* INT_Commande */ {
+
     EXIT = 0,
     INSCRIPTION,
     ABSENCE,
@@ -80,14 +83,16 @@ typedef enum {
     INCONNU
 } INT_Commande;
 
-typedef struct {
+typedef struct /* Absence */ {
+
     unsigned int id;
 
     unsigned int Njour;
     char demijournee[LONGUEUR_DEMI_JOURNEE];
 } Absence;
 
-typedef struct {
+typedef struct /* Etudiant */ {
+
     unsigned int id;
 
     char nom[LONGUEUR_NOM];
@@ -98,7 +103,8 @@ typedef struct {
     unsigned int nombreAbsences;
 } Etudiant;
 
-typedef struct {
+typedef struct /* GestionAbsences */ {
+
 	// prochain id pour les étudiants et les absences
     unsigned int next_etudiant_id;
     unsigned int next_absence_id;
@@ -112,13 +118,15 @@ typedef struct {
     unsigned int nombreAbsences;
 } GestionAbsences;
 
-typedef struct {
+typedef struct /* Context */ {
+
     unsigned int id;
 
     GestionAbsences gestionAbsences;
     unsigned int nombreCommandes;
 } Context;
-void init_context(Context* context, unsigned int context_id) /* Initialisé le context */ {
+/* Initialisé le context */
+void init_context(Context* context, unsigned int context_id) {
     context->id = context_id;
 	context->nombreCommandes = 0;
 	context->gestionAbsences.next_etudiant_id = 1;
