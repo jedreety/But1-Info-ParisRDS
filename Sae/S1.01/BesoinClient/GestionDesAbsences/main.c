@@ -57,6 +57,7 @@ enum /* Constantes */ {
     LONGUEUR_DEMI_JOURNEE = 2 + 1,
     LONGUEUR_NOM = 30 + 1,
     LONGUEUR_JUSTIFICATIF = 50 + 1,
+    LONGUEUR_AFFICHAGE = 61
 };
 
 typedef char STR_Commande[LONGUEUR_COMMANDE];
@@ -83,12 +84,28 @@ typedef enum /* INT_Commande */ {
     INCONNU
 } INT_Commande;
 
+typedef enum /* ETAT_Absence */ {
+
+    EN_ATTENTE,     
+    EN_COURS,       
+    NON_JUSTIFIEE,  
+    JUSTIFIEE       
+} ETAT_Absence;
+
+typedef struct /* Justificatif */ {
+
+    ETAT_Absence etat;                        
+    char justificatif[LONGUEUR_JUSTIFICATIF];
+    unsigned int jour_justificatif;
+} Justificatif;
+
 typedef struct /* Absence */ {
 
     unsigned int id;
 
     unsigned int Njour;
     char demijournee[LONGUEUR_DEMI_JOURNEE];
+    Justificatif justificatif;
 } Absence;
 
 typedef struct /* Etudiant */ {
@@ -118,38 +135,71 @@ typedef struct /* GestionAbsences */ {
     unsigned int nombreAbsences;
 } GestionAbsences;
 
+typedef struct /* Affichage */ {
+
+    char welcome_message[LONGUEUR_AFFICHAGE]; // Message afficher au debut du programme
+
+    char left_deco[LONGUEUR_AFFICHAGE]; // A la toute gauche premiere chose print dehors du n commande
+    char sep_prompt_deco[LONGUEUR_AFFICHAGE]; // une fois la commande fini il fait la separation entre deux commande
+
+    char start_prompt[LONGUEUR_AFFICHAGE]; // avant que l'utilisateur entre la commande
+    char start_return_prompt[LONGUEUR_AFFICHAGE]; // avant la reponse du programme
+
+} Affichage;
+
 typedef struct /* Context */ {
 
     unsigned int id;
 
     GestionAbsences gestionAbsences;
     unsigned int nombreCommandes;
+
+    Affichage affichage;
 } Context;
 /* Initialisé le context */
 void init_context(Context* context, unsigned int context_id) {
     context->id = context_id;
+
 	context->nombreCommandes = 0;
+
 	context->gestionAbsences.next_etudiant_id = 1;
 	context->gestionAbsences.next_absence_id = 1;
 	context->gestionAbsences.nombreEtudiants = 0;
 	context->gestionAbsences.nombreAbsences = 0;
+
+    strncpy(context->affichage.welcome_message, "Interface sur la gestion d'absences.", LONGUEUR_AFFICHAGE - 1);
+    context->affichage.welcome_message[LONGUEUR_AFFICHAGE - 1] = '\0';
+
+    strncpy(context->affichage.left_deco, "|", LONGUEUR_AFFICHAGE - 1);
+    context->affichage.left_deco[LONGUEUR_AFFICHAGE - 1] = '\0';
+
+    strncpy(context->affichage.sep_prompt_deco, "--|", LONGUEUR_AFFICHAGE - 1);
+    context->affichage.sep_prompt_deco[LONGUEUR_AFFICHAGE - 1] = '\0';
+
+    strncpy(context->affichage.start_prompt, "Commande :", LONGUEUR_AFFICHAGE - 1);
+    context->affichage.start_prompt[LONGUEUR_AFFICHAGE - 1] = '\0';
+
+    strncpy(context->affichage.start_return_prompt, " ||", LONGUEUR_AFFICHAGE - 1);
+    context->affichage.start_return_prompt[LONGUEUR_AFFICHAGE - 1] = '\0';
+
 }
 /* La loop du context actif */
 void context_loop(Context* context) {
 	char commande[LONGUEUR_COMMANDE];
+    Affichage* affichage = &(context->affichage);
 
-	printf("Bienvenue sur l'application de gestion des absences.\n\n");
+	printf("%s\n\n", affichage->welcome_message);
 
     while (true) {
 
 		context->nombreCommandes++;
 
         if (context->nombreCommandes < 10) 
-		printf("%u | Entrer une commande : ", context->nombreCommandes);
+		printf("%u %s %s ", context->nombreCommandes, affichage->left_deco, affichage->start_prompt);
 		/* je suis au courant que ca va casser au bout de 100 commandes mais qui va réellement entrer 100 commandes ¯\_(ツ)_ /¯
 		Potentiel fix ? if (context->nombreCommandes == 100) context->nombreCommandes = 1; */
         else
-        printf("%u| Entrer une commande : ", context->nombreCommandes);
+        printf("%u%s %s ", context->nombreCommandes, affichage->left_deco, affichage->start_prompt);
         
 
         if (scanf(" %[^\n]%*c", commande) != 1) {
@@ -160,11 +210,12 @@ void context_loop(Context* context) {
 			commande[LONGUEUR_COMMANDE - 1] = '\0';
 		}
 
+        printf("  %s %s \n", affichage->left_deco, affichage->start_return_prompt);
         if (!executer_commande(context, commande)) {
 			break;
 		}
 
-        printf("--|\n");
+        printf("\n%s\n", affichage->sep_prompt_deco);
 	}
 }
 
@@ -193,13 +244,20 @@ bool verifier_absence_existe(GestionAbsences* gestionAbsences, unsigned int etud
 Absence* trouver_absence_par_id(GestionAbsences* gestionAbsences, unsigned int id);
 
 /* C3 | Fonctions pour l'affichage des étudiants absents */
-void calculer_etudiants_absents(char commande[LONGUEUR_COMMANDE], Context* context);
+void calculer_etudiants_absents(Context* context, char commande[LONGUEUR_COMMANDE]);
 void lecture_jour_absence(char commande[LONGUEUR_COMMANDE], int* jour);
 int compte_nombre_absence(GestionAbsences* gestionAbsences, Etudiant* etudiant, int jour);
 int sort_etudiants_absents(const void* a, const void* b);
 void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudiant_absents[MAX_ETUDIANTS], int nombreEtudiantsAbsents, int jour);
 
 /* C4 | Fonctions de dêpot de justificatif */
+void enregistrer_justificatif(Context* context, char commande[LONGUEUR_COMMANDE]);
+void lecture_id_absence(char commande[LONGUEUR_COMMANDE], unsigned int* id);
+void lecture_jour_justificatif(char commande[LONGUEUR_COMMANDE], unsigned int* jour);
+void lecture_texte_justificatif(char commande[LONGUEUR_COMMANDE], char justificatif[LONGUEUR_JUSTIFICATIF]);
+bool verifier_justificatif_existe(Justificatif* justificatif);
+void mettre_a_jour_etat_absence(Justificatif* justificatif, unsigned int jour_submission);
+bool verifier_date_justificatif(Absence* absence, unsigned int jour_submission);
 
 
 int main() {
@@ -329,7 +387,7 @@ bool executer_commande(Context* context, char commande[LONGUEUR_COMMANDE]) {
 
     switch (lire_commande(commande)) /* lecture de la commande */ {
     case EXIT:
-        printf("  | Au revoir !\n");
+        printf("Au revoir !\n");
         return false;
 
     case INSCRIPTION:
@@ -341,11 +399,11 @@ bool executer_commande(Context* context, char commande[LONGUEUR_COMMANDE]) {
         break;
 
     case ETUDIANTS:
-        calculer_etudiants_absents(commande, context);
+        calculer_etudiants_absents(context, commande);
         break;
 
 	case JUSTIFICATIF:
-		printf("  | Commande non implementee\n");
+        enregistrer_justificatif(context, commande);
 		break;
 
     case HELP:
@@ -353,11 +411,11 @@ bool executer_commande(Context* context, char commande[LONGUEUR_COMMANDE]) {
         break;
 
     case INCONNU:
-        printf("  | Commande inconnue\n");
+        printf("Commande inconnue\n");
         break;
 
     default:
-        printf("  | Commande non traitee\n");
+        printf("Commande non traitee\n");
         break;
     }
     return true;
@@ -370,7 +428,7 @@ void inscrire_etudiant(Context* context, char commande[LONGUEUR_COMMANDE]) {
     GestionAbsences* gestionAbsences = &(context->gestionAbsences);
 
 	if (gestionAbsences->nombreEtudiants >= MAX_ETUDIANTS) {
-		printf("  | Impossible d'inscrire un nouvel etudiant, le nombre maximum d'etudiants est atteint.\n");
+		printf("Impossible d'inscrire un nouvel etudiant, le nombre maximum d'etudiants est atteint.\n");
 		return;
 	}
 
@@ -382,7 +440,7 @@ void inscrire_etudiant(Context* context, char commande[LONGUEUR_COMMANDE]) {
 
     // Vérifie que l'étudiant n'existe pas déjà
     if (verifier_etudiant_existe(gestionAbsences, nom, groupe)) {
-        printf("  | Nom incorrect\n");
+        printf("Nom incorrect\n");
         return;
     }
 
@@ -397,7 +455,7 @@ void inscrire_etudiant(Context* context, char commande[LONGUEUR_COMMANDE]) {
     gestionAbsences->etudiants[gestionAbsences->nombreEtudiants] = etudiant;
     gestionAbsences->nombreEtudiants++;
 
-    printf("  | Inscription enregistree (%u)\n", etudiant.id);
+    printf("Inscription enregistree (%u)\n", etudiant.id);
 
 }
 
@@ -481,7 +539,7 @@ Etudiant* trouver_etudiant_par_id(GestionAbsences* gestionAbsences, unsigned int
 void enregistrer_absence(Context* context, char commande[LONGUEUR_COMMANDE]) {
     GestionAbsences* gestionAbsences = &(context->gestionAbsences);
     if (gestionAbsences->nombreAbsences >= MAX_ABSENCES * MAX_ETUDIANTS) {
-        printf("  | Nombre maximum d'absences atteint.\n");
+        printf("Nombre maximum d'absences atteint.\n");
         return;
     }
 
@@ -495,30 +553,37 @@ void enregistrer_absence(Context* context, char commande[LONGUEUR_COMMANDE]) {
 
     Etudiant* etudiant = trouver_etudiant_par_id(gestionAbsences, etudiant_id);
     if (etudiant == NULL) {
-        printf("  | Identifiant incorrect\n");
+        printf("Identifiant incorrect\n");
         return;
     }
 
     if (Njour < 1 || Njour > 40) {
-        printf("  | Date incorrecte\n");
+        printf("Date incorrecte\n");
         return;
     }
 
     if (strcmp(demijournee, "am") != 0 && strcmp(demijournee, "pm") != 0) {
-        printf("  | Demi-journee incorrecte\n");
+        printf("Demi-journee incorrecte\n");
         return;
     }
 
     if (verifier_absence_existe(gestionAbsences, etudiant_id, Njour, demijournee)) {
-        printf("  | Absence deja connue\n");
+        printf("Absence deja connue\n");
         return;
     }
+
+    // Crée le justificatif
+    Justificatif justificatif;
+    justificatif.etat = EN_ATTENTE;
+    justificatif.justificatif[0] = '\0'; // Chaîne vide
+    justificatif.jour_justificatif = 0;  // Pas de jour de justificatif
 
     // Crée l'absence
     Absence absence;
     absence.id = gestionAbsences->next_absence_id++;
     absence.Njour = Njour;
     strcpy(absence.demijournee, demijournee);
+    absence.justificatif = justificatif;
 
     // Ajoute l'absence à la liste globale
     gestionAbsences->absences[gestionAbsences->nombreAbsences] = absence;
@@ -528,7 +593,7 @@ void enregistrer_absence(Context* context, char commande[LONGUEUR_COMMANDE]) {
     etudiant->absences_id[etudiant->nombreAbsences] = absence.id;
     etudiant->nombreAbsences++;
 
-    printf("  | Absence enregistree [%u]\n", absence.id);
+    printf("Absence enregistree [%u]\n", absence.id);
 }
 
 /* Fonction qui permet de lire l'id de l'étudiant */
@@ -601,18 +666,18 @@ Absence* trouver_absence_par_id(GestionAbsences* gestionAbsences, unsigned int i
 }
 
 /* Fonction qui affiche la liste des étudiants absents jusqu'à un jour donné */
-void calculer_etudiants_absents(char commande[LONGUEUR_COMMANDE], Context* context) {
+void calculer_etudiants_absents(Context* context, char commande[LONGUEUR_COMMANDE]) {
 
     GestionAbsences* gestionAbsences = &(context->gestionAbsences);
     if (gestionAbsences->nombreEtudiants == 0) {
-        printf("  | Aucun inscrit\n");
+        printf("Aucun inscrit\n");
         return;
     }
 
     int jour = 0;
     lecture_jour_absence(commande, &jour);
     if (jour < 1) {
-        printf("  | Date incorrecte\n");
+        printf("Date incorrecte\n");
         return;
     }
 
@@ -685,6 +750,108 @@ void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudi
         Etudiant* etudiant = &etudiant_absents[i];
 		int nb_absences = compte_nombre_absence(gestionAbsences, etudiant, jour); // compte le nombre d'absences de l'étudiant jusqu'au jour donné
         
-        printf("  | (%u) %s %u %u\n", etudiant->id, etudiant->nom, etudiant->groupe, nb_absences);
+        printf("(%u) %s %u %u\n", etudiant->id, etudiant->nom, etudiant->groupe, nb_absences);
+    }
+}
+
+void enregistrer_justificatif(Context* context, char commande[LONGUEUR_COMMANDE]) {
+    
+    GestionAbsences* gestionAbsences = &(context->gestionAbsences);
+
+    // Initialise les données
+    unsigned int absence_id = 0;
+    unsigned int jour_justificatif = 0;
+    char texte_justificatif[LONGUEUR_JUSTIFICATIF];
+
+    // On récupere les données
+    lecture_id_absence(commande, &absence_id);
+    lecture_jour_justificatif(commande, &jour_justificatif);
+    lecture_texte_justificatif(commande, texte_justificatif);
+
+    // On recupere l'absence qui nous interesse
+    Absence* absence = trouver_absence_par_id(gestionAbsences, absence_id);
+    if (absence == NULL) {
+        printf("Identifiant incorrect\n");
+        return;
+    }
+
+    if (!verifier_date_justificatif(absence, jour_justificatif)) {
+        printf("Date incorrecte\n");
+        return;
+    }
+
+    if (verifier_justificatif_existe(&(absence->justificatif))) {
+        printf("Justificatif deja connu\n");
+        return;
+    }
+
+    // Creation du justificatif
+    Justificatif justificatif;
+    strcpy(justificatif.justificatif, texte_justificatif);
+    justificatif.jour_justificatif = jour_justificatif;
+
+
+    // Enregistrement du justificatif
+    absence->justificatif = justificatif;
+
+    // Mise à jour de l'état de l'absenc
+    mettre_a_jour_etat_absence(&(absence->justificatif), jour_justificatif);
+
+    printf("Justificatif enregistre\n");
+}
+
+void lecture_id_absence(char commande[LONGUEUR_COMMANDE], unsigned int* id) {
+    int i = 0;
+    loop_to_space(commande, &i); // Commande
+    while (commande[i] == ' ' && commande[i] != '\0') {
+        i++;
+    }
+    *id = 0;
+    lecture_nombre(commande, (int*)id, i);
+}
+
+void lecture_jour_justificatif(char commande[LONGUEUR_COMMANDE], unsigned int* jour) {
+    int i = 0;
+    loop_to_space(commande, &i); // Commande
+    loop_to_space(commande, &i); // ID de l'absence
+    while (commande[i] == ' ' && commande[i] != '\0') {
+        i++;
+    }
+    *jour = 0;
+    lecture_nombre(commande, (int*)jour, i);
+}
+
+void lecture_texte_justificatif(char commande[LONGUEUR_COMMANDE], char justificatif[LONGUEUR_JUSTIFICATIF]) {
+    int i = 0;
+    loop_to_space(commande, &i); // Commande
+    loop_to_space(commande, &i); // ID de l'absence
+    loop_to_space(commande, &i); // Jour
+    while (commande[i] == ' ' && commande[i] != '\0') {
+        i++;
+    }
+    int j = 0;
+    while (commande[i] != '\0' && j < LONGUEUR_JUSTIFICATIF - 1) {
+        justificatif[j++] = commande[i++];
+    }
+    justificatif[j] = '\0';
+}
+
+bool verifier_justificatif_existe(Justificatif* justificatif) {
+    return justificatif->justificatif[0] != '\0';
+}
+
+bool verifier_date_justificatif(Absence* absence, unsigned int jour_submission) {
+    return jour_submission >= absence->Njour;
+}
+
+void mettre_a_jour_etat_absence(Absence* absence, unsigned int jour_submission) {
+
+    Justificatif justificatif = absence->justificatif;
+
+    if (jour_submission <= absence->Njour + 3) {
+        justificatif.etat = EN_COURS;
+    }
+    else {
+        justificatif.etat = NON_JUSTIFIEE;
     }
 }

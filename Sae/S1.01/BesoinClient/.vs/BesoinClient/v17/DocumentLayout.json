@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "Z:\\GitHub\\But1-Info-ParisRDS\\Sae\\S1.01\\BesoinClient\\",
+  "WorkspaceRootPath": "C:\\Users\\mehdi.mazouz1\\Documents\\GitHub\\But1-Info-ParisRDS\\Sae\\S1.01\\BesoinClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CE0F9313-42C2-4ED1-9EB6-3F443D44A24A}|GestionDesAbsences\\GestionDesAbsences.vcxproj|Z:\\GitHub\\But1-Info-ParisRDS\\Sae\\S1.01\\BesoinClient\\GestionDesAbsences\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{CE0F9313-42C2-4ED1-9EB6-3F443D44A24A}|GestionDesAbsences\\GestionDesAbsences.vcxproj|C:\\Users\\mehdi.mazouz1\\Documents\\GitHub\\But1-Info-ParisRDS\\Sae\\S1.01\\BesoinClient\\GestionDesAbsences\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CE0F9313-42C2-4ED1-9EB6-3F443D44A24A}|GestionDesAbsences\\GestionDesAbsences.vcxproj|solutionrelative:GestionDesAbsences\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -20,11 +20,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.c",
-              "DocumentMoniker": "Z:\\GitHub\\But1-Info-ParisRDS\\Sae\\S1.01\\BesoinClient\\GestionDesAbsences\\main.c",
+              "DocumentMoniker": "C:\\Users\\mehdi.mazouz1\\Documents\\GitHub\\But1-Info-ParisRDS\\Sae\\S1.01\\BesoinClient\\GestionDesAbsences\\main.c",
               "RelativeDocumentMoniker": "GestionDesAbsences\\main.c",
-              "ToolTip": "Z:\\GitHub\\But1-Info-ParisRDS\\Sae\\S1.01\\BesoinClient\\GestionDesAbsences\\main.c",
+              "ToolTip": "C:\\Users\\mehdi.mazouz1\\Documents\\GitHub\\But1-Info-ParisRDS\\Sae\\S1.01\\BesoinClient\\GestionDesAbsences\\main.c",
               "RelativeToolTip": "GestionDesAbsences\\main.c",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAAAGIAAAAbAAAA",
+              "ViewState": "AQIAALkAAAAAAAAAAAAAALUAAABTAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-10-03T09:15:59.33Z",
               "EditorCaption": ""

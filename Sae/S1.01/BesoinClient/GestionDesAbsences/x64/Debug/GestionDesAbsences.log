@@ -1,5 +1,6 @@
 ﻿  main.c
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(163,14): warning C4013: 'executer_commande' undefined; assuming extern returning int
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(206,10): warning C4101: 'commande': unreferenced local variable
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(439,56): warning C4018: '<': signed/unsigned mismatch
-  GestionDesAbsences.vcxproj -> C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\x64\Debug\GestionDesAbsences.exe
+C:\Users\mehdi.mazouz1\Documents\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(214,14): warning C4013: 'executer_commande' non défini(e) ; extern retournant int pris par défaut
+C:\Users\mehdi.mazouz1\Documents\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(264,10): warning C4101: 'commande' : variable locale non référencée
+C:\Users\mehdi.mazouz1\Documents\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(497,56): warning C4018: '<' : incompatibilité signed/unsigned
+C:\Users\mehdi.mazouz1\Documents\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(847,42): warning C4028: paramètre formel 1 différent de la déclaration
+  GestionDesAbsences.vcxproj -> C:\Users\mehdi.mazouz1\Documents\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\x64\Debug\GestionDesAbsences.exe
