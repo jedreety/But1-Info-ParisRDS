@@ -1,4 +1,4 @@
-# BUT1 Informatique - Paris Rive de Seine
+# BUT1 Informatique - Paris Rives de Seine
 
 **Dépôt des Travaux Pratiques et SAÉ**  
 
@@ -46,5 +46,3 @@ Si vous avez des questions, n'hésitez pas à me mp :
 - **Instagram** : [mehdi.b3r](https://www.instagram.com/mehdi.b3r)
 
 ---
-
-Merci !
