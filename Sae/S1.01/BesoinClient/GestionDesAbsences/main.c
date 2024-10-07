@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+
 #pragma warning(disable:4996)
 
 /*
@@ -35,7 +36,7 @@
 	- trouver_absence_par_id : Permet de trouver une absence par son ID ( renvoie un pointeur sur l'absence )
 
 	!!! 
-        Les fonctions trouver_etudiant_par_id et trouver_absence_par_id sont implementé de sorte a ce que les IDs sont attribués séquentiellement et sans suppression
+        Les fonctions trouver_etudiant_par_id et trouver_absence_par_id sont implementé de sorte a ce que les IDs dans la list ID sont attribués séquentiellement et sans suppression
 		Si une fonction supprime un étudiant ou une absence, il faudra adapter ces fonctions ( remplace l'id par un NULL ou changer la fonction par une recherche linéaire )
     !!!
 
@@ -135,7 +136,7 @@ typedef struct /* GestionAbsences */ {
     unsigned int nombreAbsences;
 } GestionAbsences;
 
-typedef struct /* Affichage */ {
+typedef struct /* Affichage */ { // Pas très utile ¯\_(ツ)_/¯
 
     char welcome_message[LONGUEUR_AFFICHAGE]; // Message afficher au debut du programme
 
@@ -143,7 +144,7 @@ typedef struct /* Affichage */ {
     char sep_prompt_deco[LONGUEUR_AFFICHAGE]; // une fois la commande fini il fait la separation entre deux commande
 
     char start_prompt[LONGUEUR_AFFICHAGE]; // avant que l'utilisateur entre la commande
-    char start_return_prompt[LONGUEUR_AFFICHAGE]; // avant la reponse du programme
+    char start_return_prompt[LONGUEUR_AFFICHAGE]; // entre la reponse et l'entré
 
 } Affichage;
 
@@ -170,16 +171,16 @@ void init_context(Context* context, unsigned int context_id) {
     strncpy(context->affichage.welcome_message, "Interface sur la gestion d'absences.", LONGUEUR_AFFICHAGE - 1);
     context->affichage.welcome_message[LONGUEUR_AFFICHAGE - 1] = '\0';
 
-    strncpy(context->affichage.left_deco, "|", LONGUEUR_AFFICHAGE - 1);
+    strncpy(context->affichage.left_deco, "", LONGUEUR_AFFICHAGE - 1);
     context->affichage.left_deco[LONGUEUR_AFFICHAGE - 1] = '\0';
 
-    strncpy(context->affichage.sep_prompt_deco, "--|", LONGUEUR_AFFICHAGE - 1);
+    strncpy(context->affichage.sep_prompt_deco, "", LONGUEUR_AFFICHAGE - 1);
     context->affichage.sep_prompt_deco[LONGUEUR_AFFICHAGE - 1] = '\0';
 
-    strncpy(context->affichage.start_prompt, "Commande :", LONGUEUR_AFFICHAGE - 1);
+    strncpy(context->affichage.start_prompt, "", LONGUEUR_AFFICHAGE - 1);
     context->affichage.start_prompt[LONGUEUR_AFFICHAGE - 1] = '\0';
 
-    strncpy(context->affichage.start_return_prompt, " ||", LONGUEUR_AFFICHAGE - 1);
+    strncpy(context->affichage.start_return_prompt, "", LONGUEUR_AFFICHAGE - 1);
     context->affichage.start_return_prompt[LONGUEUR_AFFICHAGE - 1] = '\0';
 
 }
@@ -194,13 +195,7 @@ void context_loop(Context* context) {
 
 		context->nombreCommandes++;
 
-        if (context->nombreCommandes < 10) 
-		printf("%u %s %s ", context->nombreCommandes, affichage->left_deco, affichage->start_prompt);
-		/* je suis au courant que ca va casser au bout de 100 commandes mais qui va réellement entrer 100 commandes ¯\_(ツ)_ /¯
-		Potentiel fix ? if (context->nombreCommandes == 100) context->nombreCommandes = 1; */
-        else
         printf("%u%s %s ", context->nombreCommandes, affichage->left_deco, affichage->start_prompt);
-        
 
         if (scanf(" %[^\n]%*c", commande) != 1) {
 			printf("Input error : Erreur lors de la lecture de la commande.\n");
@@ -215,7 +210,7 @@ void context_loop(Context* context) {
 			break;
 		}
 
-        printf("\n%s\n", affichage->sep_prompt_deco);
+        printf("%s\n", affichage->sep_prompt_deco);
 	}
 }
 
