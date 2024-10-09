@@ -1,0 +1,3 @@
+﻿  main.c
+Z:\GitHub\But1-Info-ParisRDS\TP\R1.01\semaine-5\exo1\main.c(111,1): warning C4715: 'estValide' : les chemins de contrôle ne retournent pas tous une valeur
+  exo1.vcxproj -> Z:\GitHub\But1-Info-ParisRDS\TP\R1.01\semaine-5\exo1\x64\Debug\exo1.exe
