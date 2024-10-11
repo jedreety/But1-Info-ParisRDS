@@ -1,6 +1,2 @@
 ﻿  main.c
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(208,14): warning C4013: 'executer_commande' undefined; assuming extern returning int
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(258,10): warning C4101: 'commande': unreferenced local variable
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(491,56): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(841,42): warning C4028: formal parameter 1 different from declaration
   GestionDesAbsences.vcxproj -> C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\x64\Debug\GestionDesAbsences.exe
