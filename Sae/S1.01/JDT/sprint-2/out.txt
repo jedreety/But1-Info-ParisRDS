@@ -1,0 +1,78 @@
+Inscription realisee (1)
+
+Inscription realisee (2)
+
+Inscription realisee (3)
+
+Inscription realisee (4)
+
+Aucune validation en attente
+
+Absence enregistree [1]
+
+Absence enregistree [2]
+
+Absence enregistree [3]
+
+Absence enregistree [4]
+
+Aucune validation en attente
+
+Justificatif enregistre
+
+[1] (2) Yves-Francois 3 1/pm (J'ai eu mal au ventre)
+
+Justificatif enregistre
+
+Justificatif enregistre
+
+[1] (2) Yves-Francois 3 1/pm (J'ai eu mal au ventre)
+[2] (4) Loriane       3 3/pm (Ma chaine de velo a deraille)
+
+(3) Abel          1 0
+(1) Stella        1 1
+(4) Loriane       3 1
+(2) Yves-Francois 3 2
+
+(3) Abel          1 0
+(1) Stella        1 1
+(4) Loriane       3 0
+(2) Yves-Francois 3 2
+
+Validation enregistree
+
+[2] (4) Loriane 3 3/pm (Ma chaine de velo a deraille)
+
+Validation enregistree
+
+Aucune validation en attente
+
+(3) Abel          1 0
+(1) Stella        1 1
+(4) Loriane       3 1
+(2) Yves-Francois 3 2
+
+(3) Abel          1 0
+(1) Stella        1 1
+(4) Loriane       3 0
+(2) Yves-Francois 3 2
+
+Identifiant incorrect
+
+Identifiant incorrect
+
+Date incorrecte
+
+Date incorrecte
+
+Justificatif deja connu
+
+Identifiant incorrect
+
+Identifiant incorrect
+
+Code incorrect
+
+Code incorrect
+
+Validation deja connue

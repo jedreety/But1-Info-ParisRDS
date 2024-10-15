@@ -1,0 +1,82 @@
+Aucun defaillant
+
+Inscription realisee (1)
+
+Absence enregistree [1]
+
+Absence enregistree [2]
+
+Absence enregistree [3]
+
+Absence enregistree [4]
+
+Absence enregistree [5]
+
+(1) Stella 1 1
+- En attente justificatif
+  [1] 1/pm
+
+Aucun defaillant
+
+(1) Stella 1 5
+- Non-justifiees
+  [1] 1/pm
+  [2] 2/pm
+  [3] 3/pm
+  [4] 4/pm
+  [5] 5/pm
+
+(1) Stella 1 5
+
+Justificatif enregistre
+
+(1) Stella 1 5
+- En attente validation
+  [5] 5/pm (malade)
+- Non-justifiees
+  [1] 1/pm
+  [2] 2/pm
+  [3] 3/pm
+  [4] 4/pm
+
+Aucun defaillant
+
+Validation enregistree
+
+(1) Stella 1 5
+- Non-justifiees
+  [1] 1/pm
+  [2] 2/pm
+  [3] 3/pm
+  [4] 4/pm
+  [5] 5/pm (malade)
+
+(1) Stella 1 5
+
+Justificatif enregistre
+
+(1) Stella 1 5
+- En attente validation
+  [4] 4/pm (trop malade)
+- Non-justifiees
+  [1] 1/pm
+  [2] 2/pm
+  [3] 3/pm
+  [5] 5/pm (malade)
+
+Aucun defaillant
+
+Validation enregistree
+
+(1) Stella 1 5
+- Justifiees
+  [4] 4/pm (trop malade)
+- Non-justifiees
+  [1] 1/pm
+  [2] 2/pm
+  [3] 3/pm
+  [5] 5/pm (malade)
+
+Aucun defaillant
+
+Date incorrecte

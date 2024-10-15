@@ -1,0 +1,34 @@
+inscription Stella 1
+inscription Yves-Francois 3
+inscription Abel 1
+inscription Loriane 3
+validations
+absence 2 1 pm
+absence 4 3 pm
+absence 2 1 am
+absence 1 2 am
+validations
+justificatif 1 2 J'ai eu mal au ventre
+validations
+justificatif 3 5 J'avais piscine
+justificatif 2 6 Ma chaine de velo a deraille
+validations
+etudiants 3
+etudiants 2
+validation 1 ok
+validations
+validation 2 ko
+validations
+etudiants 3
+etudiants 2
+justificatif 0 2 J'ai eu mal au ventre
+justificatif 5 2 J'ai eu mal au ventre
+justificatif 2 2 J'ai eu mal au ventre
+justificatif 2 0 J'ai eu mal au ventre
+justificatif 1 2 Je n'aime pas le C
+validation 0 ok
+validation 5 ok
+validation 1 oc
+validation 1 ak
+validation 1 ko
+exit

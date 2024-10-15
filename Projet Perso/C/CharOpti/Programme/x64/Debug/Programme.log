@@ -1,6 +1,0 @@
-﻿  main.c
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Projet Perso\C\CharOpti\Programme\main.c(39,25): warning C4267: 'function': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Projet Perso\C\CharOpti\Programme\main.c(50,25): warning C4267: 'function': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Projet Perso\C\CharOpti\Programme\main.c(104,41): warning C4028: formal parameter 2 different from declaration
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Projet Perso\C\CharOpti\Programme\main.c(156,41): warning C4028: formal parameter 2 different from declaration
-  Programme.vcxproj -> C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Projet Perso\C\CharOpti\Programme\x64\Debug\Programme.exe

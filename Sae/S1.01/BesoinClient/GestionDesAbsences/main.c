@@ -5,12 +5,9 @@
 #pragma warning(disable:4996)
 
 /*
-	Projet de gestion des absences
-	Auteur : Mehdi Mazouz
-	Date : 2024
-
-	Pour compiler le programme, il suffit de taper la commande suivante dans le terminal :
-	> gcc main.c -o main
+	Projet de gestion des absences pour But Informatique Paris-RDS
+	Par Mehdi Mazouz
+	Date : 12/10/2024
 
     Pour ajouter une commande :
 	1 - Ajouter le nom de commande dans la liste liste_commande    <const STR_Commande liste_commande[]>
@@ -23,12 +20,12 @@
 	5 - Ajouter les fonctions necessaire.
 
 	Fonction d'aide :
-	- lecture_commande : Permet de lire le nom de la commande
-
 	- loop_to_space : Permet de passer au mot suivant en donnant l'index ( renvoie l'index de la premiere lettre dans la commande du mot suivant )
-	- lecture_nombre : Permet de lire un nombre
-	- lecture_string : Permet de lire une chaine de caractères
+	
+    - lecture_nombre : Permet de lire un nombre
 	- read_data_int : Permet de lire un nombre en sautant un nombre de mots spécifiés
+	
+    - lecture_string : Permet de lire une chaine de caractères
 	- read_data_str : Permet de lire une chaine de caractères en sautant un nombre de mots spécifiés
 
 	- verifier_etudiant_existe : Permet de vérifier si un étudiant existe ( renvoie un booléen )
@@ -258,12 +255,22 @@ void categoriser_absences_etudiant(
 );
 
 /* Lecture de commande */
+<<<<<<< Updated upstream
 void lecture_commande(commande_type commande, char nom_commande[LONGUEUR_COMMANDE]);
 void loop_to_space(commande_type commande, int* i);
 void lecture_nombre(commande_type commande, int* nombre, int i);
 void lecture_string(commande_type commande, char string[LONGUEUR_MAX_COMMANDE], unsigned int string_len, int i);
 void read_data_int(commande_type commande, int* value, int skip_words);
 void read_data_str(commande_type commande, char str[], unsigned int max_length, int skip_words);
+=======
+void lecture_commande(char commande[LONGUEUR_COMMANDE], char nom_commande[LONGUEUR_COMMANDE]);
+void loop_to_space(char commande[LONGUEUR_COMMANDE], int* i);
+void lecture_nombre(char commande[LONGUEUR_COMMANDE], int* nombre, int i);
+void lecture_string(char commande[LONGUEUR_COMMANDE], char string[LONGUEUR_COMMANDE], unsigned int string_len, int i);
+void read_data_int(char commande[LONGUEUR_COMMANDE], int* value, int skip_words);
+void read_data_str(char commande[LONGUEUR_COMMANDE], char str[], unsigned int max_length, int skip_words);
+void lire_justificatif(char commande[LONGUEUR_COMMANDE], char justificatif[], unsigned int max_length, int skip_words);
+>>>>>>> Stashed changes
 
 /* Fonction de Verification */
 bool verifier_etudiant_id(GestionAbsences* gestionAbsences, unsigned int etudiant_id);
@@ -280,6 +287,7 @@ bool afficher_justificatif(Absence* absence, unsigned int jour_courant);
 bool verifier_string_not_null(const char* string);
 
 /* Fonction Externe */
+int calculer_espace_alignement(int longueur_actuelle, int longueur_maximale);
 void afficher_aide();
 void afficher_parametres_inscription();
 void afficher_parametres_absence();
@@ -301,6 +309,7 @@ const AideCommande aides[] = {
     {"help", "help", "Afficher l'aide.", NULL}
 };
 
+
 /* Fonction du Context */
 void init_context(Context* context, unsigned int context_id) {
     context->id = context_id;
@@ -312,7 +321,11 @@ void init_context(Context* context, unsigned int context_id) {
 	context->gestionAbsences.nombreEtudiants = 0;
 	context->gestionAbsences.nombreAbsences = 0;
 
+<<<<<<< Updated upstream
     strncpy(context->affichage.welcome_message, "", LONGUEUR_AFFICHAGE - 1);
+=======
+    strncpy(context->affichage.welcome_message, "Gestion d'Absences 2024 .Mehdi", LONGUEUR_AFFICHAGE - 1);
+>>>>>>> Stashed changes
     context->affichage.welcome_message[LONGUEUR_AFFICHAGE - 1] = '\0';
 
     strncpy(context->affichage.left_deco, "", LONGUEUR_AFFICHAGE - 1);
@@ -596,13 +609,65 @@ void calculer_etudiants_absents(Context* context, commande_type commande) {
 /* affiche la liste des étudiants absents */
 void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudiant_absents[MAX_ETUDIANTS], int nombreEtudiantsAbsents, int jour) {
 
-    // parcour la liste
+    // Détermination des longueurs maximales pour l'alignement
+    int max_longueur_id = 0;
+    int max_longueur_nom = 0;
+    int max_longueur_groupe = 0;
+    int max_longueur_absences = 0;
+
+    // Première passe pour calculer les longueurs maximales
     for (int i = 0; i < nombreEtudiantsAbsents; i++) {
-
         Etudiant* etudiant = &etudiant_absents[i];
-        int nb_absences = compte_nombre_absence(gestionAbsences, etudiant, jour); // compte le nombre d'absences de l'étudiant jusqu'au jour donné
+        int nb_absences = compte_nombre_absence(gestionAbsences, etudiant, jour);
 
-        printf("(%u) %s %u %u\n", etudiant->id, etudiant->nom, etudiant->groupe, nb_absences);
+        // Longueur de l'ID
+        int longueur_id = snprintf(NULL, 0, "%u", etudiant->id);
+        if (longueur_id > max_longueur_id) {
+            max_longueur_id = longueur_id;
+        }
+
+        // Longueur du nom
+        int longueur_nom = strlen(etudiant->nom);
+        if (longueur_nom > max_longueur_nom) {
+            max_longueur_nom = longueur_nom;
+        }
+
+        // Longueur du groupe
+        int longueur_groupe = snprintf(NULL, 0, "%d", etudiant->groupe);
+        if (longueur_groupe > max_longueur_groupe) {
+            max_longueur_groupe = longueur_groupe;
+        }
+
+        // Longueur du nombre d'absences
+        int longueur_absences = snprintf(NULL, 0, "%d", nb_absences);
+        if (longueur_absences > max_longueur_absences) {
+            max_longueur_absences = longueur_absences;
+        }
+    }
+
+    // Deuxième passe pour l'affichage avec alignement
+    for (int i = 0; i < nombreEtudiantsAbsents; i++) {
+        Etudiant* etudiant = &etudiant_absents[i];
+        int nb_absences = compte_nombre_absence(gestionAbsences, etudiant, jour);
+
+        // Longueurs actuelles
+        int longueur_id = snprintf(NULL, 0, "%u", etudiant->id);
+        int longueur_nom = strlen(etudiant->nom);
+        int longueur_groupe = snprintf(NULL, 0, "%d", etudiant->groupe);
+        int longueur_absences = snprintf(NULL, 0, "%d", nb_absences);
+
+        // Calcul des espaces pour l'alignement
+        int espace_id = calculer_espace_alignement(longueur_id, max_longueur_id);
+        int espace_nom = calculer_espace_alignement(longueur_nom, max_longueur_nom);
+        int espace_groupe = calculer_espace_alignement(longueur_groupe, max_longueur_groupe);
+        int espace_absences = calculer_espace_alignement(longueur_absences, max_longueur_absences);
+
+        // Affichage aligné
+        printf("(%u)%*s %s%*s %d%*s %d\n",
+            etudiant->id, espace_id, "",
+            etudiant->nom, espace_nom, "",
+            etudiant->groupe, espace_groupe, "",
+            nb_absences);
     }
 }
 
@@ -616,12 +681,13 @@ void enregistrer_justificatif(Context* context, commande_type commande) {
     // Initialise les données
     unsigned int absence_id = 0;
     unsigned int jour_justificatif = 0;
-    char texte_justificatif[LONGUEUR_JUSTIFICATIF];
+    char justificatif[LONGUEUR_JUSTIFICATIF];
+    
 
     // On récupere les données
     read_data_int(commande, (int*)&absence_id, 1);
     read_data_int(commande, (int*)&jour_justificatif, 2);
-    read_data_str(commande, texte_justificatif, LONGUEUR_JUSTIFICATIF - 1, 3);
+	lire_justificatif(commande, justificatif, LONGUEUR_JUSTIFICATIF - 1, 3); // fonction special parcque le il y a des espaces
 
     // On recupere l'absence qui nous interesse
     if (!verifier_absence_id(gestionAbsences, absence_id)) {
@@ -641,7 +707,7 @@ void enregistrer_justificatif(Context* context, commande_type commande) {
     }
 
     // Enregistrement du justificatif
-    strcpy(absence->justificatif.justificatif, texte_justificatif);
+    strcpy(absence->justificatif.justificatif, justificatif);
     absence->justificatif.jour_justificatif = jour_justificatif;
 
     mettre_a_jour_etat_absence(&(absence->justificatif), absence->Njour, jour_justificatif);
@@ -664,18 +730,16 @@ void mettre_a_jour_etat_absence(Justificatif* justificatif, unsigned int absence
 void afficher_validations(Context* context) {
     GestionAbsences* gestionAbsences = &(context->gestionAbsences);
 
-    // Tableau pour stocker les pointeurs vers les absences en attente de validation
+    // Tableau pour stocker les absences en attente de validation
     Absence* absences_en_attente[MAX_ABSENCES * MAX_ETUDIANTS];
     int nombreAbsencesEnAttente = 0;
 
-    // Parcours de toutes les absences
+    // Récupération des absences en attente de validation
     for (unsigned int i = 0; i < gestionAbsences->nombreAbsences; i++) {
         Absence* absence = &(gestionAbsences->absences[i]);
 
-        // Vérification si le justificatif est en cours de validation
         if (absence->justificatif.etat == EN_COURS) {
-            absences_en_attente[nombreAbsencesEnAttente] = absence;
-            nombreAbsencesEnAttente++;
+            absences_en_attente[nombreAbsencesEnAttente++] = absence;
         }
     }
 
@@ -684,29 +748,85 @@ void afficher_validations(Context* context) {
         return;
     }
 
-    // Tri des absences en attente
+    // Tri des absences
     qsort(absences_en_attente, nombreAbsencesEnAttente, sizeof(Absence*), comparer_absences_C5);
 
-    // Affichage des absences en attente
+    // Détermination des longueurs maximales
+    int max_longueur_absence_id = 0;
+    int max_longueur_etudiant_id = 0;
+    int max_longueur_nom = 0;
+    int max_longueur_groupe = 0;
+    int max_longueur_date = 0;
+
     for (int i = 0; i < nombreAbsencesEnAttente; i++) {
         Absence* absence = absences_en_attente[i];
-
-        // Récupération de l'étudiant
         Etudiant* etudiant = trouver_etudiant_par_id(gestionAbsences, absence->etudiant_id);
-        if (etudiant == NULL) {
-            printf("Etudiant introuvable pour l'absence %d\n", absence->id);
-            continue; // Ne devrait pas se produire
+
+        // Longueur de l'ID de l'absence
+        int longueur_absence_id = snprintf(NULL, 0, "%u", absence->id);
+        if (longueur_absence_id > max_longueur_absence_id) {
+            max_longueur_absence_id = longueur_absence_id;
         }
 
-        // Affichage des informations
-        printf("[%u] (%u) %s %d %u/%s (%s)\n",
-            absence->id,
-            etudiant->id,
-            etudiant->nom,
-            etudiant->groupe,
-            absence->Njour,
-            absence->demijournee,
-            absence->justificatif.justificatif);
+        // Longueur de l'ID de l'étudiant
+        int longueur_etudiant_id = snprintf(NULL, 0, "%u", etudiant->id);
+        if (longueur_etudiant_id > max_longueur_etudiant_id) {
+            max_longueur_etudiant_id = longueur_etudiant_id;
+        }
+
+        // Longueur du nom de l'étudiant
+        int longueur_nom = strlen(etudiant->nom);
+        if (longueur_nom > max_longueur_nom) {
+            max_longueur_nom = longueur_nom;
+        }
+
+        // Longueur du groupe
+        int longueur_groupe = snprintf(NULL, 0, "%d", etudiant->groupe);
+        if (longueur_groupe > max_longueur_groupe) {
+            max_longueur_groupe = longueur_groupe;
+        }
+
+        // Longueur de la date
+        char date[15];
+        snprintf(date, sizeof(date), "%u/%s", absence->Njour, absence->demijournee);
+        int longueur_date = strlen(date);
+        if (longueur_date > max_longueur_date) {
+            max_longueur_date = longueur_date;
+        }
+    }
+
+    // Affichage des absences en attente avec alignement
+    for (int i = 0; i < nombreAbsencesEnAttente; i++) {
+        Absence* absence = absences_en_attente[i];
+        Etudiant* etudiant = trouver_etudiant_par_id(gestionAbsences, absence->etudiant_id);
+
+        // Longueurs actuelles
+        int longueur_absence_id = snprintf(NULL, 0, "%u", absence->id);
+        int longueur_etudiant_id = snprintf(NULL, 0, "%u", etudiant->id);
+        int longueur_nom = strlen(etudiant->nom);
+        int longueur_groupe = snprintf(NULL, 0, "%d", etudiant->groupe);
+
+        char date[15];
+        snprintf(date, sizeof(date), "%u/%s", absence->Njour, absence->demijournee);
+        int longueur_date = strlen(date);
+
+        // Calcul des espaces
+        int espace_absence_id = calculer_espace_alignement(longueur_absence_id, max_longueur_absence_id);
+        int espace_etudiant_id = calculer_espace_alignement(longueur_etudiant_id, max_longueur_etudiant_id);
+        int espace_nom = calculer_espace_alignement(longueur_nom, max_longueur_nom);
+        int espace_groupe = calculer_espace_alignement(longueur_groupe, max_longueur_groupe);
+        int espace_date = calculer_espace_alignement(longueur_date, max_longueur_date);
+
+        // Affichage aligné
+        printf("[%u]%*s (%u)%*s %s%*s %d%*s %s",
+               absence->id, espace_absence_id, "",
+               etudiant->id, espace_etudiant_id, "",
+               etudiant->nom, espace_nom, "",
+               etudiant->groupe, espace_groupe, "",
+               date);
+
+        // Afficher le justificatif
+        printf(" (%s)\n", absence->justificatif.justificatif);
     }
 }
 
@@ -826,18 +946,70 @@ void afficher_situation_etudiant(Context* context, commande_type commande) {
 void afficher_absences(const char* titre, Absence* absences[], int nb_absences, bool afficher_justificatif, unsigned int jour_courant) {
     if (nb_absences > 0) {
         printf("- %s\n", titre);
+
+        // Détermination des longueurs maximales
+        int max_longueur_absence_id = 0;
+        int max_longueur_date = 0;
+
         for (int i = 0; i < nb_absences; i++) {
             Absence* absence = absences[i];
+<<<<<<< Updated upstream
             if (afficher_justificatif && verifier_string_not_null(absence->justificatif.justificatif) && absence->justificatif.jour_justificatif <= jour_courant) {
                 printf("  [%u] %u/%s (%s)\n", absence->id, absence->Njour, absence->demijournee, absence->justificatif.justificatif);
             }
             else {
                 printf("  [%u] %u/%s\n", absence->id, absence->Njour, absence->demijournee);
+=======
+
+            // Longueur de l'ID de l'absence
+            int longueur_absence_id = snprintf(NULL, 0, "%u", absence->id);
+            if (longueur_absence_id > max_longueur_absence_id) {
+                max_longueur_absence_id = longueur_absence_id;
             }
+
+            // Longueur de la date
+            char date[15];
+            snprintf(date, sizeof(date), "%u/%s", absence->Njour, absence->demijournee);
+            int longueur_date = strlen(date);
+            if (longueur_date > max_longueur_date) {
+                max_longueur_date = longueur_date;
+            }
+        }
+
+        // Affichage des absences
+        for (int i = 0; i < nb_absences; i++) {
+            Absence* absence = absences[i];
+
+            // Longueurs actuelles
+            int longueur_absence_id = snprintf(NULL, 0, "%u", absence->id);
+
+            char date[15];
+            snprintf(date, sizeof(date), "%u/%s", absence->Njour, absence->demijournee);
+            int longueur_date = strlen(date);
+
+            // Calcul des espaces
+            int espace_absence_id = calculer_espace_alignement(longueur_absence_id, max_longueur_absence_id);
+            int espace_date = calculer_espace_alignement(longueur_date, max_longueur_date);
+
+            // Affichage aligné
+            printf("  [%u]%*s %s",
+                absence->id, espace_absence_id, "",
+                date);
+
+            // Affichage du justificatif si nécessaire
+            if (afficher_justificatif && absence->justificatif.justificatif[0] != '\0' && absence->justificatif.jour_justificatif <= jour_courant) {
+                printf(" (%s)", absence->justificatif.justificatif);
+>>>>>>> Stashed changes
+            }
+			printf("\n");
         }
     }
 }
+<<<<<<< Updated upstream
 
+=======
+/* catégorise les absences d'un étudiant */
+>>>>>>> Stashed changes
 void traiter_absence_sans_justificatif(
     Absence* absence,
     unsigned int jour_courant,
@@ -853,7 +1025,10 @@ void traiter_absence_sans_justificatif(
         absences_non_justifiees[(*nb_non_justifiees)++] = absence;
     }
 }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 /* ----- C8 ----- */
 /* affiche la liste des étudiants défaillants */
@@ -1244,6 +1419,26 @@ void read_data_str(commande_type commande, char str[], unsigned int max_length, 
     // Lire la chaîne de caractères
     lecture_string(commande, str, max_length, i);
 }
+/* Fonction qui permet de lire une donnée Justificatif de la commande */
+void lire_justificatif(char commande[LONGUEUR_COMMANDE], char justificatif[], unsigned int max_length, int skip_words) {
+    int i = 0;
+	int j = 0;
+    // Sauter les mots spécifiés
+    for (int w = 0; w < skip_words; w++) {
+        loop_to_space(commande, &i);
+    }
+    // Sauter les espaces supplémentaires
+    while (commande[i] == ' ' && commande[i] != '\0') {
+        i++;
+    }
+    // Lire le justificatif entier
+    while (commande[i] != '\0' && j < max_length) {
+        justificatif[j] = commande[i];
+        i++;
+        j++;
+    }
+    justificatif[j] = '\0';
+}
 
 
 /* ----- vérification des paramètres ----- */
@@ -1304,6 +1499,13 @@ bool verifier_string_not_null(const char* string) {
 
 /* ----- Externe ----- */
 /* Fonction qui affiche l'aide */
+int calculer_espace_alignement(int longueur_actuelle, int longueur_maximale) {
+    int difference = longueur_maximale - longueur_actuelle;
+    if (difference < 0) {
+        difference = 0;
+    }
+    return difference;
+}
 void afficher_aide() {
     printf("  |\n  | Liste des commandes :\n  | \n");
     for (unsigned int i = 0; i < sizeof(aides) / sizeof(AideCommande); i++) {

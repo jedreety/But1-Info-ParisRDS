@@ -1,0 +1,28 @@
+inscription Stella 1
+inscription Yves-Francois 3
+inscription Abel 1
+inscription Loriane 3
+inscription Jean-Max 10
+inscription Kamel 3
+etudiants 1
+inscription Stella 3
+etudiants 1
+inscription Stella 1
+etudiants 1
+etudiants 0
+absence 2 1 pm
+etudiants 3
+absence 4 3 pm
+absence 2 1 am
+etudiants 3
+etudiants 10
+etudiants 1
+etudiants 2
+absence 7 1 am
+absence 0 1 am
+absence 1 0 pm
+absence 1 41 am
+absence 1 1 xm
+absence 1 1 pn
+absence 4 3 pm
+exit
