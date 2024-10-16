@@ -1,15 +1,11 @@
 ﻿  main.c
-<<<<<<< Updated upstream
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(617,28): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(642,28): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(765,28): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(779,29): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(793,28): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(798,29): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(953,33): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(968,33): warning C4267: 'initialisation' : conversion de 'size_t' en 'int', perte possible de données
+Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(1408,37): warning C4018: '<' : incompatibilité signed/unsigned
   GestionDesAbsences.vcxproj -> Z:\GitHub\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\x64\Debug\GestionDesAbsences.exe
-=======
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(607,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(632,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(755,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(769,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(783,28): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(788,29): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(943,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(958,33): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\GestionDesAbsences\main.c(1396,37): warning C4018: '<': signed/unsigned mismatch
-  GestionDesAbsences.vcxproj -> C:\Users\Mehdi\OneDrive\Documents\GitHub\INFO\But1-Info-ParisRDS\Sae\S1.01\BesoinClient\x64\Debug\GestionDesAbsences.exe
->>>>>>> Stashed changes

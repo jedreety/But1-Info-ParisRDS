@@ -330,6 +330,7 @@ void save_ppm(double terrain[LARGEUR][LONGUEUR], double hauteurMax, double haute
     }
 
     fclose(fp);
+
     printf("Terrain image saved as terrain.ppm\n");
 }
 

@@ -255,22 +255,13 @@ void categoriser_absences_etudiant(
 );
 
 /* Lecture de commande */
-<<<<<<< Updated upstream
 void lecture_commande(commande_type commande, char nom_commande[LONGUEUR_COMMANDE]);
 void loop_to_space(commande_type commande, int* i);
 void lecture_nombre(commande_type commande, int* nombre, int i);
 void lecture_string(commande_type commande, char string[LONGUEUR_MAX_COMMANDE], unsigned int string_len, int i);
 void read_data_int(commande_type commande, int* value, int skip_words);
 void read_data_str(commande_type commande, char str[], unsigned int max_length, int skip_words);
-=======
-void lecture_commande(char commande[LONGUEUR_COMMANDE], char nom_commande[LONGUEUR_COMMANDE]);
-void loop_to_space(char commande[LONGUEUR_COMMANDE], int* i);
-void lecture_nombre(char commande[LONGUEUR_COMMANDE], int* nombre, int i);
-void lecture_string(char commande[LONGUEUR_COMMANDE], char string[LONGUEUR_COMMANDE], unsigned int string_len, int i);
-void read_data_int(char commande[LONGUEUR_COMMANDE], int* value, int skip_words);
-void read_data_str(char commande[LONGUEUR_COMMANDE], char str[], unsigned int max_length, int skip_words);
-void lire_justificatif(char commande[LONGUEUR_COMMANDE], char justificatif[], unsigned int max_length, int skip_words);
->>>>>>> Stashed changes
+void lire_justificatif(commande_type commande, char justificatif[], unsigned int max_length, int skip_words);
 
 /* Fonction de Verification */
 bool verifier_etudiant_id(GestionAbsences* gestionAbsences, unsigned int etudiant_id);
@@ -321,11 +312,7 @@ void init_context(Context* context, unsigned int context_id) {
 	context->gestionAbsences.nombreEtudiants = 0;
 	context->gestionAbsences.nombreAbsences = 0;
 
-<<<<<<< Updated upstream
     strncpy(context->affichage.welcome_message, "", LONGUEUR_AFFICHAGE - 1);
-=======
-    strncpy(context->affichage.welcome_message, "Gestion d'Absences 2024 .Mehdi", LONGUEUR_AFFICHAGE - 1);
->>>>>>> Stashed changes
     context->affichage.welcome_message[LONGUEUR_AFFICHAGE - 1] = '\0';
 
     strncpy(context->affichage.left_deco, "", LONGUEUR_AFFICHAGE - 1);
@@ -953,13 +940,6 @@ void afficher_absences(const char* titre, Absence* absences[], int nb_absences, 
 
         for (int i = 0; i < nb_absences; i++) {
             Absence* absence = absences[i];
-<<<<<<< Updated upstream
-            if (afficher_justificatif && verifier_string_not_null(absence->justificatif.justificatif) && absence->justificatif.jour_justificatif <= jour_courant) {
-                printf("  [%u] %u/%s (%s)\n", absence->id, absence->Njour, absence->demijournee, absence->justificatif.justificatif);
-            }
-            else {
-                printf("  [%u] %u/%s\n", absence->id, absence->Njour, absence->demijournee);
-=======
 
             // Longueur de l'ID de l'absence
             int longueur_absence_id = snprintf(NULL, 0, "%u", absence->id);
@@ -999,23 +979,20 @@ void afficher_absences(const char* titre, Absence* absences[], int nb_absences, 
             // Affichage du justificatif si nécessaire
             if (afficher_justificatif && absence->justificatif.justificatif[0] != '\0' && absence->justificatif.jour_justificatif <= jour_courant) {
                 printf(" (%s)", absence->justificatif.justificatif);
->>>>>>> Stashed changes
             }
 			printf("\n");
         }
     }
 }
-<<<<<<< Updated upstream
 
-=======
 /* catégorise les absences d'un étudiant */
->>>>>>> Stashed changes
 void traiter_absence_sans_justificatif(
     Absence* absence,
     unsigned int jour_courant,
     Absence* absences_en_attente_justificatif[], int* nb_attente_justificatif,
     Absence* absences_non_justifiees[], int* nb_non_justifiees
-) {
+)
+{
     if (jour_courant <= absence->Njour + 3) {
         // Le délai de dépôt du justificatif n'est pas expiré
         absences_en_attente_justificatif[(*nb_attente_justificatif)++] = absence;
@@ -1025,10 +1002,6 @@ void traiter_absence_sans_justificatif(
         absences_non_justifiees[(*nb_non_justifiees)++] = absence;
     }
 }
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 /* ----- C8 ----- */
 /* affiche la liste des étudiants défaillants */
@@ -1420,7 +1393,7 @@ void read_data_str(commande_type commande, char str[], unsigned int max_length, 
     lecture_string(commande, str, max_length, i);
 }
 /* Fonction qui permet de lire une donnée Justificatif de la commande */
-void lire_justificatif(char commande[LONGUEUR_COMMANDE], char justificatif[], unsigned int max_length, int skip_words) {
+void lire_justificatif(commande_type commande, char justificatif[], unsigned int max_length, int skip_words) {
     int i = 0;
 	int j = 0;
     // Sauter les mots spécifiés
