@@ -38,10 +38,6 @@ double gradient(int hash, double x, double y, double z);
 double perlin(double x, double y, double z);
 // Enregistre le terrain dans un fichier PPM
 void save_ppm(double terrain[LARGEUR][LONGUEUR], double hauteurMax, double hauteurMin);
-// Envoie l'image sur Discord
-int send_to_discord(const char* filename, const char* webhook_url);
-// Enregistre le terrain dans un fichier PPM
-void save_to_ppm(double terrain[LARGEUR][LONGUEUR], double hauteurMax, double hauteurMin, const char* filename);
 
 /* Je ne citerais pas mes documentations mais expliquerais ce que j'ai fais pour la suite de ce programme */
 
@@ -249,21 +245,6 @@ int main() {
     save_ppm(terrain, hauteurMax, hauteurMin);
     
 
-    /*
-    const char* ppm_filename = "terrain.ppm";
-    save_to_ppm(terrain, hauteurMax, hauteurMin, ppm_filename);
-
-    // Convert PPM to PNG
-    system("convert terrain.ppm terrain.png");
-
-    // Send the PNG image to Discord
-    const char* webhook_url = getenv("https://discord.com/api/webhooks/1295868755359825961/MBDESe4gyKUmk6xY0EJm6qhPTkiy-5wVoIkfAZLxNI0qHW1oGvQ-bFLBFRLJu8SiyLOY");
-    if (!webhook_url) {
-        fprintf(stderr, "Error: DISCORD_WEBHOOK_URL not set.\n");
-        return 1;
-    }
-    send_to_discord("terrain.png", webhook_url);
-    */
     return 0;
 }
 
@@ -333,110 +314,3 @@ void save_ppm(double terrain[LARGEUR][LONGUEUR], double hauteurMax, double haute
 
     printf("Terrain image saved as terrain.ppm\n");
 }
-
-/* Etape 4 envoyer l'image sur discord */
-
-/*
-int send_to_discord(const char* filename, const char* webhook_url) {
-    CURL* curl;
-    CURLcode res;
-    curl_mime* form = NULL;
-    curl_mimepart* field = NULL;
-
-    // Initialize libcurl
-    curl_global_init(CURL_GLOBAL_ALL);
-    curl = curl_easy_init();
-    if (curl) {
-        // Create the form
-        form = curl_mime_init(curl);
-
-        // Add the file field
-        field = curl_mime_addpart(form);
-        curl_mime_name(field, "file1");
-        curl_mime_filedata(field, filename);
-
-        // Set the webhook URL
-        curl_easy_setopt(curl, CURLOPT_URL, webhook_url);
-
-        // Set the form data
-        curl_easy_setopt(curl, CURLOPT_MIMEPOST, form);
-
-        // Perform the request
-        res = curl_easy_perform(curl);
-
-        // Check for errors
-        if (res != CURLE_OK) {
-            fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
-        }
-        else {
-            printf("Image sent to Discord successfully.\n");
-        }
-
-        // Cleanup
-        curl_mime_free(form);
-        curl_easy_cleanup(curl);
-    }
-    curl_global_cleanup();
-    return 0;
-}
-
-void save_to_ppm(double terrain[LARGEUR][LONGUEUR], double hauteurMax, double hauteurMin, const char* filename) {
-    FILE* fp = fopen(filename, "w");
-    if (fp == NULL) {
-        printf("Error: Could not open file %s for writing.\n", filename);
-        return;
-    }
-
-    // Write the PPM header
-    fprintf(fp, "P3\n%d %d\n255\n", LARGEUR, LONGUEUR);
-
-    // Loop through the terrain data and write pixel values
-    for (int y = 0; y < LONGUEUR; y++) {
-        for (int x = 0; x < LARGEUR; x++) {
-            // Normalize the terrain value to [0, 1]
-            double normalizedValue = (terrain[x][y] - hauteurMin) / (hauteurMax - hauteurMin);
-
-            // Initialize RGB components
-            int r, g, b;
-
-            // Map normalizedValue to colors
-            if (normalizedValue < 0.3) {
-                // Water: Deep blue
-                r = 0;
-                g = 0;
-                b = (int)(normalizedValue / 0.3 * 128 + 127); // From dark to lighter blue
-            }
-            else if (normalizedValue < 0.4) {
-                double t = (normalizedValue - 0.4) / 0.3;
-                // Sand: Light yellow
-                r = (int)((1 - t) * 238 - 20);
-                g = (int)((1 - t) * 214 - 20);
-                b = (int)((1 - t) * 175 - 20);
-            }
-            else if (normalizedValue < 0.7) {
-                double t = (normalizedValue - 0.4) / 0.3;
-                r = (int)((1 - t) * 40 + t * 25);   // From dark green to lighter green
-                g = (int)((1 - t) * 130 + t * 80);
-                b = (int)((1 - t) * 40 + t * 15);
-            }
-            else {
-                // Mountain: Gray to white
-                int gray = (int)((normalizedValue - 0.7) / 0.8 * 255);
-                r = g = b = 200 + gray;
-            }
-
-            // Clamp color values to [0, 255]
-            r = r < 0 ? 0 : (r > 255 ? 255 : r);
-            g = g < 0 ? 0 : (g > 255 ? 255 : g);
-            b = b < 0 ? 0 : (b > 255 ? 255 : b);
-
-            // Write the color values
-            fprintf(fp, "%d %d %d ", r, g, b);
-        }
-        fprintf(fp, "\n");
-    }
-
-    fclose(fp);
-    printf("Terrain image saved as %s\n", filename);
-}
-*/
