@@ -197,33 +197,43 @@ typedef struct /* AideCommande */ {
 } AideCommande;
 
 
-/* C0 | Fonctions de lecture et d'exécution des commandes */
+/* Fonction qui lit la commande entrée par l'utilisateur et renvoie son code numérique correspondant */
 INT_Commande lire_commande(commande_type commande);
+
+/* Fonction qui exécute la commande correspondante et renvoie un booléen pour continuer ou arrêter le programme */
 bool executer_commande(Context* context, commande_type commande);
 
-/* C1 | Fonctions pour l'inscription des étudiants */
+/* Fonction qui permet d'inscrire un nouvel étudiant dans le système */
 void inscrire_etudiant(Context* context, commande_type commande);
 
-/* C2 | Fonctions pour l'a gestion'enregistrement des absences */
+/* Fonction qui enregistre une absence pour un étudiant donné */
 void enregistrer_absence(Context* context, commande_type commande);
 
-/* C3 | Fonctions pour la liste des étudiants */
+/* Fonction qui compte le nombre d'absences d'un étudiant jusqu'à un jour donné */
 int compte_nombre_absence(GestionAbsences* gestionAbsences, Etudiant* etudiant, int jour);
+
+/* Fonction qui affiche la liste des étudiants avec leur nombre d'absences */
 void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudiant_absents[MAX_ETUDIANTS], int nombreEtudiantsAbsents, int jour);
 
-/* C4 | Fonctions de dêpot de justificatif */
+/* Fonction qui enregistre un justificatif pour une absence donnée */
 void enregistrer_justificatif(Context* context, commande_type commande);
+
+/* Fonction qui met à jour l'état d'une absence en fonction du justificatif fourni */
 void mettre_a_jour_etat_absence(Justificatif* justificatif, unsigned int absence_Njour, unsigned int jour_submission);
 
-/* C5 | Fonctions pour la liste des absences en attente de validation */
+/* Fonction qui affiche la liste des absences en attente de validation */
 void afficher_validations(Context* context);
 
-/* C6 | Validation/invalidation d’un justificatif */
+/* Fonction qui permet de valider ou invalider un justificatif d'absence */
 void valider_justificatif(Context* context, commande_type commande);
 
-/* C7 | Fonctions pour la situation d’un étudiant */
+/* Fonction qui affiche la situation détaillée d'un étudiant à un jour donné */
 void afficher_situation_etudiant(Context* context, commande_type commande);
+
+/* Fonction qui affiche une liste d'absences avec la possibilité d'afficher le justificatif associé */
 void afficher_absences(const char* titre, Absence* absences[], int nb_absences, bool afficher_justificatif, unsigned int jour_courant);
+
+/* Fonction qui traite une absence sans justificatif en fonction du délai légal */
 void traiter_absence_sans_justificatif(
     Absence* absence,
     unsigned int jour_courant,
@@ -231,19 +241,31 @@ void traiter_absence_sans_justificatif(
     Absence* absences_non_justifiees[], int* nb_non_justifiees
 );
 
-/* C8 | Fonctions pour la liste des étudiants d´efaillants */
+/* Fonction qui affiche la liste des étudiants défaillants à un jour donné */
 void afficher_defaillants(Context* context, commande_type commande);
 
-/* Fonction de tri */
+/* Fonction de comparaison pour trier les étudiants absents par groupe et nom */
 int sort_etudiants_absents(const void* a, const void* b);
+
+/* Fonction de comparaison pour trier les absences pour l'affichage des validations */
 int comparer_absences_C5(const void* a, const void* b);
+
+/* Fonction de comparaison pour trier les absences pour l'affichage de la situation d'un étudiant */
 int comparer_absences_C7(const void* a, const void* b);
+
+/* Fonction de comparaison pour trier les étudiants défaillants */
 int comparer_etudiants_defaillants(const void* a, const void* b);
 
-/* Fonction de recherche */
+/* Fonction qui vérifie si un étudiant existe dans le système */
 Etudiant* trouver_etudiant_par_id(GestionAbsences* gestionAbsences, unsigned int id);
+
+/* Fonction qui trouve une absence par son identifiant */
 Absence* trouver_absence_par_id(GestionAbsences* gestionAbsences, unsigned int id);
+
+/* Fonction qui calcule et affiche la liste des étudiants avec leur nombre d'absences jusqu'à un jour donné */
 void calculer_etudiants_absents(Context* context, commande_type commande);
+
+/* Fonction qui catégorise les absences d'un étudiant en fonction de leur état */
 void categoriser_absences_etudiant(
     Etudiant* etudiant,
     GestionAbsences* gestionAbsences,
@@ -254,38 +276,70 @@ void categoriser_absences_etudiant(
     Absence* absences_non_justifiees[], int* nb_non_justifiees
 );
 
-/* Lecture de commande */
+/* Fonction qui lit le nom de la commande entrée par l'utilisateur */
 void lecture_commande(commande_type commande, char nom_commande[LONGUEUR_COMMANDE]);
+
+/* Fonction qui avance l'index jusqu'au prochain espace dans la commande */
 void loop_to_space(commande_type commande, int* i);
+
+/* Fonction qui lit un nombre entier à partir de la commande */
 void lecture_nombre(commande_type commande, int* nombre, int i);
+
+/* Fonction qui lit une chaîne de caractères à partir de la commande */
 void lecture_string(commande_type commande, char string[LONGUEUR_MAX_COMMANDE], unsigned int string_len, int i);
+
+/* Fonction qui lit un entier en sautant un certain nombre de mots dans la commande */
 void read_data_int(commande_type commande, int* value, int skip_words);
+
+/* Fonction qui lit une chaîne de caractères en sautant un certain nombre de mots dans la commande */
 void read_data_str(commande_type commande, char str[], unsigned int max_length, int skip_words);
+
+/* Fonction spécifique pour lire un justificatif, qui peut contenir des espaces */
 void lire_justificatif(commande_type commande, char justificatif[], unsigned int max_length, int skip_words);
 
-/* Fonction de Verification */
-bool verifier_etudiant_id(GestionAbsences* gestionAbsences, unsigned int etudiant_id);
-bool verifier_absence_id(GestionAbsences* gestionAbsences, unsigned int absence_id);
-bool verifier_date(int Njour);
-bool verifier_demijournee(char demijournee[]);
-bool verifier_code_validation(char code[]);
-bool verifier_etudiant_existe_pas(GestionAbsences* gestionAbsences, char nom[], int groupe);
-bool verifier_justificatif_existe(Justificatif* justificatif);
-bool verifier_date_justificatif(Absence* absence, unsigned int jour_submission);
+/* Fonction qui vérifie si un étudiant existe dans le système */
 bool verifier_etudiant_existe(GestionAbsences* gestionAbsences, char nom[LONGUEUR_NOM], int groupe);
+
+/* Fonction qui vérifie si une absence existe pour un étudiant à une date donnée */
 bool verifier_absence_existe(GestionAbsences* gestionAbsences, unsigned int etudiant_id, unsigned int Njour, char demijournee[LONGUEUR_DEMI_JOURNEE]);
+
+/* Fonction qui vérifie si un justificatif existe déjà pour une absence */
+bool verifier_justificatif_existe(Justificatif* justificatif);
+
+/* Fonction qui vérifie si la date de dépôt du justificatif est valide */
+bool verifier_date_justificatif(Absence* absence, unsigned int jour_submission);
+
+/* Fonction qui détermine s'il faut afficher le justificatif d'une absence */
 bool afficher_justificatif(Absence* absence, unsigned int jour_courant);
+
+/* Fonction qui vérifie qu'une chaîne de caractères n'est pas vide */
 bool verifier_string_not_null(const char* string);
 
-/* Fonction Externe */
+/* Fonction qui calcule l'espacement nécessaire pour aligner le texte */
 int calculer_espace_alignement(int longueur_actuelle, int longueur_maximale);
+
+/* Fonction qui affiche l'aide avec la liste des commandes disponibles */
 void afficher_aide();
+
+/* Fonction qui affiche les paramètres de la commande 'inscription' */
 void afficher_parametres_inscription();
+
+/* Fonction qui affiche les paramètres de la commande 'absence' */
 void afficher_parametres_absence();
+
+/* Fonction qui affiche les paramètres de la commande 'justificatif' */
 void afficher_parametres_justificatif();
+
+/* Fonction qui affiche les paramètres de la commande 'etudiants' */
 void afficher_parametres_etudiants();
+
+/* Fonction qui affiche les paramètres de la commande 'validation' */
 void afficher_parametres_validation();
+
+/* Fonction qui affiche les paramètres de la commande 'etudiant' */
 void afficher_parametres_etudiant();
+
+/* Fonction qui affiche les paramètres de la commande 'defaillants' */
 void afficher_parametres_defaillants();
 const AideCommande aides[] = {
     {"exit", "exit", "Quitter l'application.", NULL},
