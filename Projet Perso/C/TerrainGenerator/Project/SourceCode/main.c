@@ -170,9 +170,9 @@ int main() {
     double terrain[LARGEUR][LONGUEUR];
 
     /* Les parametre ajustable */
-    double scale = 120.0; // Contrôle le niveau de détail. Une valeur d'échelle plus élevée permet d'obtenir un terrain plus lisse avec des éléments plus grands.
-    int octaves = 8; // Nombre de couches de bruit à combiner. Plus il y a d'octaves, plus les détails sont fins.
-    double persistence = 0.6; // Détermine la manière dont l'amplitude diminue pour chaque octave suivante. Valeurs comprises entre 0 et 1.
+    double scale = 50.0; // Contrôle le niveau de détail. Une valeur d'échelle plus élevée permet d'obtenir un terrain plus lisse avec des éléments plus grands.
+    int octaves = 7; // Nombre de couches de bruit à combiner. Plus il y a d'octaves, plus les détails sont fins.
+    double persistence = 0.8; // Détermine la manière dont l'amplitude diminue pour chaque octave suivante. Valeurs comprises entre 0 et 1.
     
     double hauteurMin = INFINITY;
     double hauteurMax = -INFINITY;
@@ -193,7 +193,7 @@ int main() {
                 double sampleY = y / scale * frequence;
 
                 // On genere des valeurs de bruit la valeur de z est fixé à 0 car nous voulons une carte en 2D
-                double valeurBruit = perlin(sampleX, sampleY, 0.0, p) * 2 - 1;
+                double valeurBruit = perlin(sampleX, 0.0, sampleY, p) * 2 - 1;
                 // Ajoute l'octave actuele au terrain pondéré par l'amplitude
                 hauteurBruit += valeurBruit * amplitude;
 

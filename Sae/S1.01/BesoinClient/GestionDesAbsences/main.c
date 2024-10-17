@@ -198,37 +198,37 @@ typedef struct /* AideCommande */ {
 
 
 /* Fonction qui lit la commande entrée par l'utilisateur et renvoie son code numérique correspondant */
-INT_Commande lire_commande(commande_type commande);
+INT_Commande lire_commande(const commande_type commande);
 
 /* Fonction qui exécute la commande correspondante et renvoie un booléen pour continuer ou arrêter le programme */
-bool executer_commande(Context* context, commande_type commande);
+bool executer_commande(Context* context, const commande_type commande);
 
 /* Fonction qui permet d'inscrire un nouvel étudiant dans le système */
-void inscrire_etudiant(Context* context, commande_type commande);
+void inscrire_etudiant(Context* context, const commande_type commande);
 
 /* Fonction qui enregistre une absence pour un étudiant donné */
-void enregistrer_absence(Context* context, commande_type commande);
+void enregistrer_absence(Context* context, const commande_type commande);
 
 /* Fonction qui compte le nombre d'absences d'un étudiant jusqu'à un jour donné */
-int compte_nombre_absence(GestionAbsences* gestionAbsences, Etudiant* etudiant, int jour);
+int compte_nombre_absence(GestionAbsences* gestionAbsences, Etudiant* etudiant, const int jour);
 
 /* Fonction qui affiche la liste des étudiants avec leur nombre d'absences */
-void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudiant_absents[MAX_ETUDIANTS], int nombreEtudiantsAbsents, int jour);
+void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudiant_absents[MAX_ETUDIANTS], int nombreEtudiantsAbsents, const int jour);
 
 /* Fonction qui enregistre un justificatif pour une absence donnée */
 void enregistrer_justificatif(Context* context, commande_type commande);
 
 /* Fonction qui met à jour l'état d'une absence en fonction du justificatif fourni */
-void mettre_a_jour_etat_absence(Justificatif* justificatif, unsigned int absence_Njour, unsigned int jour_submission);
+void mettre_a_jour_etat_absence(Justificatif* justificatif, const unsigned int absence_Njour, const  unsigned int jour_submission);
 
 /* Fonction qui affiche la liste des absences en attente de validation */
 void afficher_validations(Context* context);
 
 /* Fonction qui permet de valider ou invalider un justificatif d'absence */
-void valider_justificatif(Context* context, commande_type commande);
+void valider_justificatif(Context* context, const commande_type commande);
 
 /* Fonction qui affiche la situation détaillée d'un étudiant à un jour donné */
-void afficher_situation_etudiant(Context* context, commande_type commande);
+void afficher_situation_etudiant(Context* context, const commande_type commande);
 
 /* Fonction qui affiche une liste d'absences avec la possibilité d'afficher le justificatif associé */
 void afficher_absences(const char* titre, Absence* absences[], int nb_absences, bool afficher_justificatif, unsigned int jour_courant);
@@ -236,13 +236,13 @@ void afficher_absences(const char* titre, Absence* absences[], int nb_absences, 
 /* Fonction qui traite une absence sans justificatif en fonction du délai légal */
 void traiter_absence_sans_justificatif(
     Absence* absence,
-    unsigned int jour_courant,
+    const unsigned int jour_courant,
     Absence* absences_en_attente_justificatif[], int* nb_attente_justificatif,
     Absence* absences_non_justifiees[], int* nb_non_justifiees
 );
 
 /* Fonction qui affiche la liste des étudiants défaillants à un jour donné */
-void afficher_defaillants(Context* context, commande_type commande);
+void afficher_defaillants(Context* context, const commande_type commande);
 
 /* Fonction de comparaison pour trier les étudiants absents par groupe et nom */
 int sort_etudiants_absents(const void* a, const void* b);
@@ -263,7 +263,7 @@ Etudiant* trouver_etudiant_par_id(GestionAbsences* gestionAbsences, unsigned int
 Absence* trouver_absence_par_id(GestionAbsences* gestionAbsences, unsigned int id);
 
 /* Fonction qui calcule et affiche la liste des étudiants avec leur nombre d'absences jusqu'à un jour donné */
-void calculer_etudiants_absents(Context* context, commande_type commande);
+void calculer_etudiants_absents(Context* context, const commande_type commande);
 
 /* Fonction qui catégorise les absences d'un étudiant en fonction de leur état */
 void categoriser_absences_etudiant(
@@ -277,25 +277,25 @@ void categoriser_absences_etudiant(
 );
 
 /* Fonction qui lit le nom de la commande entrée par l'utilisateur */
-void lecture_commande(commande_type commande, char nom_commande[LONGUEUR_COMMANDE]);
+void lecture_commande(const commande_type commande, const char nom_commande[LONGUEUR_COMMANDE]);
 
 /* Fonction qui avance l'index jusqu'au prochain espace dans la commande */
-void loop_to_space(commande_type commande, int* i);
+void loop_to_space(const commande_type commande, int* i);
 
 /* Fonction qui lit un nombre entier à partir de la commande */
-void lecture_nombre(commande_type commande, int* nombre, int i);
+void lecture_nombre(const commande_type commande, int* nombre, int i);
 
 /* Fonction qui lit une chaîne de caractères à partir de la commande */
 void lecture_string(commande_type commande, char string[LONGUEUR_MAX_COMMANDE], unsigned int string_len, int i);
 
 /* Fonction qui lit un entier en sautant un certain nombre de mots dans la commande */
-void read_data_int(commande_type commande, int* value, int skip_words);
+void read_data_int(const commande_type commande, int* value, int skip_words);
 
 /* Fonction qui lit une chaîne de caractères en sautant un certain nombre de mots dans la commande */
-void read_data_str(commande_type commande, char str[], unsigned int max_length, int skip_words);
+void read_data_str(const commande_type commande, char str[], unsigned int max_length, int skip_words);
 
 /* Fonction spécifique pour lire un justificatif, qui peut contenir des espaces */
-void lire_justificatif(commande_type commande, char justificatif[], unsigned int max_length, int skip_words);
+void lire_justificatif(const commande_type commande, char justificatif[], unsigned int max_length, int skip_words);
 
 /* Fonction qui vérifie si un étudiant existe dans le système */
 bool verifier_etudiant_existe(GestionAbsences* gestionAbsences, char nom[LONGUEUR_NOM], int groupe);
@@ -704,10 +704,10 @@ void afficher_etudiants_absents(GestionAbsences* gestionAbsences, Etudiant etudi
         int espace_absences = calculer_espace_alignement(longueur_absences, max_longueur_absences);
 
         // Affichage aligné
-        printf("(%u)%*s %s%*s %d%*s %d\n",
+        printf("(%u)%*s %s%*s %*s%d %d\n",
             etudiant->id, espace_id, "",
             etudiant->nom, espace_nom, "",
-            etudiant->groupe, espace_groupe, "",
+            espace_groupe, "", etudiant->groupe,
             nb_absences);
     }
 }
